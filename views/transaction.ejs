@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Transaction</title>
+  <%- include("partials/_seo"); -%>
+</head>
+
+<body class="bg-blueishWhite text-xs md:text-sm xl:text-base main">
+  <%- include("partials/_header", { userName: user.fullName }); -%>
+  <%- include("partials/_userSidebar", { page: currentPage }); -%>
+  <section class="p-4">
+    <div class="flex flex-col gap-y-2 bg-white shadow-md mx-auto mt-40 px-6 py-10 rounded-lg max-w-[30rem]">
+      <div class="flex justify-between items-center my-4 text-primaryGreen">
+        <h2 class="font-bold text-base md:text-lg xl:text-xl"><%= type.charAt(0).toUpperCase() + type.slice(1) %> Details</h2>
+        <i class="ph-fill ph-receipt text-3xl"></i>
+      </div>
+      <p class="text-gray-700 capitalize"><strong>Amount:</strong> <span class="text-primaryBlue">$<%= transaction.amount.toFixed(2) %></span> </p>
+      <p class="text-gray-700 capitalize"><strong>Date:</strong> <%= new Date(transaction.createdAt).toLocaleString('en-US') %></p>
+      <% if (type === 'investment') { %>
+      <p class="text-gray-700 capitalize"><strong>Plan:</strong> <span class="text-yellow-700"><%= transaction.plan %> Plan</span></p>
+      <p class="text-gray-700 capitalize"><strong>Start Date:</strong> <%= new Date(transaction.startDate).toLocaleString('en-US') %></p>
+      <p class="text-gray-700 capitalize"><strong>End Date:</strong> <%= new Date(transaction.endDate).toLocaleString('en-US') %></p>
+      <p class="text-gray-700 capitalize"><strong>Payout Amount:</strong> <span class="font-semibold text-darkBlue">$<%= transaction.payoutAmount.toFixed(2) %></span> </p>
+      <p class="mt-1 text-gray-700 capitalize">
+        <strong>Status:</strong> 
+        <span class="<%= transaction.status === 'completed' ? 'bg-green-200 text-green-600' : transaction.status === 'running' ? 'bg-yellow-200 text-yellow-600' : transaction.status === 'cancelled' ? 'bg-red-200 text-red-600' : 'text-gray-500' %> px-4 py-1 rounded-2xl">
+          <%= transaction.status %>
+        </span>
+      </p>
+      <% } %>
+      <% if (type === 'withdrawal') { %>
+      <p class="text-gray-700 capitalize"><strong>Coin:</strong> <span class="text-yellow-700"><%= transaction.coin %></span></p>
+      <p class="text-gray-700 capitalize"><strong>Wallet Address:</strong> <%= transaction.walletAddress %></p>
+      <p class="mt-1 text-gray-700 capitalize">
+        <strong>Status:</strong>
+        <span class="<%= transaction.status === 'successful' ? 'bg-green-200 text-green-600' : transaction.status === 'pending' ? 'bg-yellow-200 text-yellow-600' : transaction.status === 'failed' ? 'text-red-200 text-red-600' : 'text-gray-500' %> px-4 py-1 rounded-2xl">
+          <%= transaction.status %>
+        </span>
+      </p>
+      <% } %>
+      <% if (type === 'deposit') { %>
+      <p class="text-gray-700 capitalize"><strong>Coin:</strong> <span class="text-yellow-700"><%= transaction.coin %></span></p>
+      <p class="text-gray-700 capitalize"><strong>Transaction Hash:</strong> <%= transaction.transactionHash %></p>
+      <p class="mt-1 text-gray-700 capitalize">
+        <strong>Status:</strong>
+        <span class="<%= transaction.status === 'successful' ? 'bg-green-200 text-green-600' : transaction.status === 'pending' ? 'bg-yellow-200 text-yellow-600' : transaction.status === 'failed' ? 'text-red-200 text-red-600' : 'text-gray-500' %> px-4 py-1 rounded-2xl">
+          <%= transaction.status %>
+        </span>
+      </p>
+      <% } %>
+      <% if (type === 'penalty' || type === 'bonus' || type === "earning") { %>
+      <p class="text-gray-700 capitalize"><strong>Reason:</strong> <%= transaction.description %></p>
+      <% } %>
+      <div class="flex justify-end mt-10">
+        <a href="/user/history" class="flex items-center gap-x-2 font-medium text-red-600 hover:text-red-500 duration-300">
+          Go Back <i class="ph-backspace ph-fill text-xl"></i>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+</body>
+
+</html>

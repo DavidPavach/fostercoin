@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Profile</title>
+  <%- include("partials/_seo"); -%>
+  <script defer src="../JS/auth.js"></script>
+</head>
+
+<body class="bg-blueishWhite text-xs md:text-sm xl:text-base main">
+  <%- include("partials/_header", { userName: user.fullName }); -%>
+  <%- include("partials/_userSidebar", { page: currentPage }); -%>
+  <%- include("partials/_alert"); -%>
+
+  <section class="p-4">
+    <!-- User Profile Details -->
+    <div class="border-gray-200 bg-white shadow-md mb-4 p-4 border rounded-lg">
+    <p class="mb-4 font-bold text-lg text-lightBlack md:text-xl lg:text-2xl xl:text-3xl">Your Profile</p>
+
+      <% if (userProfile) { %>
+      <div class="gap-6 grid grid-cols-1 md:grid-cols-2 capitalize">
+        <p><strong>Country:</strong> <%= userProfile.country || "N/A" %></p>
+        <p><strong>City:</strong> <%= userProfile.city || "N/A" %></p>
+        <p><strong>Postal Code:</strong> <%= userProfile.postalCode || "N/A" %></p>
+        <p><strong>Phone Number:</strong> <%= userProfile.phoneNumber || "N/A" %></p>
+        <p><strong>Gender:</strong> <%= userProfile.gender || "N/A" %></p>
+        <p><strong>BTC Wallet:</strong> <%= user.wallet || "N/A" %></p>
+      </div>
+      <% } else { %>
+      <p class="text-gray-700">You have not completed your profile yet.</p>
+      <% } %>
+    </div>
+
+    <!-- Update Profile Form -->
+    <div class="border-gray-200 bg-white shadow-md p-4 border rounded-lg">
+      <p class="font-bold text-lightBlack text-sm md:text-base xl:text-lg">Update your profile</p>
+      <p class="text-darkBlue">Use the form to update your profile.</p>
+
+      <form id="myForm" action="/user/profile" method="post" class="space-y-4 mt-10">
+        <%- include('partials/_input.ejs', { type: 'text', id: 'country', name: 'country', label: 'Country', placeholder: userProfile?.country || 'Enter your country', required: false }) %>
+        <%- include('partials/_input.ejs', { type: 'text', id: 'city', name: 'city', label: 'City', placeholder: userProfile?.city || 'Enter your city', required: false }) %>
+        <%- include('partials/_input.ejs', { type: 'text', id: 'postalCode', name: 'postalCode', label: 'Postal Code', placeholder: userProfile?.postalCode || 'Enter your postal code', required: false }) %>
+        <%- include('partials/_input.ejs', { type: 'text', id: 'phoneNumber', name: 'phoneNumber', label: 'Phone Number', placeholder: userProfile?.phoneNumber || 'Enter your phone number', required: false }) %>
+        <label for="gender" class="block font-medium text-gray-700">Gender</label>
+        <select id="gender" name="gender" class="border-darkWhite focus:border-primaryGreen mt-1 mb-4 px-4 py-3 pr-10 border rounded-md w-full focus:outline-none">
+          <option value="" disabled selected><%= userProfile?.gender || "Select Gender" %></option>
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+        </select>
+        <%- include('partials/_button.ejs', { type: 'submit', label: 'Update Profile', icon: '👤', disabled: false }) %>
+      </form>
+    </div>
+  </section>
+</body>
+
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact</title>
+  <%- include("partials/_seo"); -%>
+  <script defer src="../JS/index.js"></script>
+</head>
+
+<body class="text-xs md:text-sm xl:text-base">
+  <!-- Nav Bar -->
+  <%- include("partials/_nav"); -%>
+  <%- include("partials/_alert"); -%>
+  <%- include ("partials/_secondHero.ejs", { imageUrl: '/Images/googleMap.jpg', heading: 'Contact Us', subtext: 'Home'}); -%>
+  <section class="bg-white text-xs md:text-sm xl:text-base">
+    <div class="flex md:flex-row flex-col bg-white mx-auto py-20">
+      <div class="md:ml-10 p-4 md:w-1/3">
+        <h2 class="mt-4 font-bold text-darkBlue text-lg sm:text-xl md:text-2xl xl:text-3xl">Details</h2>
+        <h4 class="mt-4 font-bold text-primaryGreen">Office Address</h4>
+        <p class="mt-2">
+            Bahnhofstrasse 123, 8001 Zürich, Switzerland.
+        </p>
+        <h4 class="mt-4 font-bold text-primaryGreen">Company's Email</h4>
+        <p class="mt-2">
+          Info@fostercoin.ltd <br>
+          Support@fostercoin.ltd
+        </p>
+      </div>
+      <div class="mt-4 p-4 md:w-2/3">
+        <form class="md:mt-4" action="/contact" method="post">
+          <p class="mt-4">
+            <input class="border-2 border-primaryGreen px-6 py-3 rounded-[1.5rem] rounded-tr-none md:rounded-tr-none xl:rounded-tr-none w-full md:w-4/5 placeholder:font-light placeholder:text-gray-400 focus:outline-darkBlue" type="text" id="email" name="email" placeholder="Enter Your Email Address" required />
+          </p>
+          <p class="mt-4">
+            <input class="border-2 border-primaryGreen px-6 py-3 rounded-[1.5rem] w-full md:w-4/5 placeholder:font-light placeholder:text-gray-400 focus:outline-darkBlue" type="text" id="subject" name="subject" placeholder="Enter The Subject" required />
+          </p>
+          <p class="mt-4">
+            <textarea placeholder="Enter The Message" class="border-2 border-primaryGreen shadow-md p-4 rounded-[1.5rem] rounded-bl-none md:rounded-bl-none xl:rounded-bl-none w-full md:w-4/5 h-40 focus:outline-darkBlue" name="message" id="contactMessage"></textarea>
+          </p>
+          <p class="mt-6">
+            <input type="submit" class="bg-primaryGreen hover:bg-darkBlue px-16 py-3 rounded-lg text-white duration-300 cursor-pointer baseline" value=Send />
+          </p>
+        </form>
+      </div>
+    </div>
+  </section>
+  <%- include("partials/_cta"); -%>
+  <%- include("partials/_footer"); -%>
+</body>
+
+</html>

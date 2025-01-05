@@ -1,0 +1,450 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Foster Coin</title>
+  <%- include("partials/_seo"); -%>
+  <script defer src="../JS/index.js"></script>
+</head>
+
+<body class="text-xs md:text-sm xl:text-base">
+  <%- include('partials/_alert') %>
+  <%- include("partials/_nav"); -%>
+
+  <section id="heroSection">
+    <div class="relative pt-[5rem] sm:pt-[6rem] md:pt-[7rem] lg:pt-[8rem] xl:pt-[9rem] 2xl:pt-[10rem]">
+      <div class="flex flex-col items-center text-center">
+        <h1 class="font-bold text-lightBlack text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl 2xl:text-6xl">
+          A New Era of Financial
+        </h1>
+        <h1 class="mt-1 sm:mt-2 md:mt-3 lg:mt-4 font-bold text-lightBlack text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl 2xl:text-6xl">
+          Freedom
+        </h1>
+        <p class="mt-2 md:mt-4 lg:mt-6 w-[90%] sm:w-[1/3%] md:w-[70%] lg:w-[60%] xl:w-[50%] 2xl:w-[40%] text-[#8E8E93] text-xs sm:text-sm md:text-base xl:text-lg 2xl:text-xl">
+          Innovative Investing with Foster Coin: Your Gateway to Cutting-Edge
+          Cryptocurrency Trading, Investment, and Portfolio Management. Join
+          our community of forward-thinking enthusiasts to unlock your
+          financial potential and shape a better tomorrow.
+        </p>
+        <div class="flex gap-x-3 lg:gap-x-5 xl:gap-x-7 2xl:gap-x-10 mt-6 text-xs sm:text-sm">
+          <a href="/create" class="relative z-40 bg-darkBlue px-4 lg:px-6 xl:px-8 2xl:px-10 py-2 md:py-3 rounded-md text-white hover:-translate-x-2 duration-500">Get Started
+          </a>
+          <a href="/about" class="relative z-40 border-primarybg-darkBlue hover:bg-darkBlue px-4 lg:px-6 xl:px-8 2xl:px-10 py-2 md:py-3 border rounded-md text-primarybg-darkBlue hover:text-white duration-500">About us</a>
+        </div>
+        <div class="relative flex items-center mx-auto my-20 w-fit">
+            <img src="../Images/heroImg.svg" alt="Foster Coin" />
+            <img class="top-2 left-0 absolute bounceAnimation" src="../Images/istCoin.svg" alt="Foster Coin" />
+            <img class="top-6 left-[10rem] absolute bounceAnimation1" src="../Images/2ndCoin.svg" alt="Foster Coin" />
+            <img class="sm:block top-0 left-[16rem] absolute hidden bounceAnimation" src="../Images/3rdCoin.svg" alt="Foster Coin" />
+            <img class="sm:block lg:block top-4 left-[24rem] absolute hidden md:hidden bounceAnimation1" src="../Images/4thCoin.svg" alt="Foster Coin" />
+            <img class="top-0 left-[10rem] absolute moveAnimation" src="../Images/cloud.svg" alt="Foster Coin" />
+            <img class="sm:block lg:block top-[12rem] left-[24rem] absolute hidden md:hidden moveAnimation1" src="../Images/cloud1.svg" alt="Foster Coin" />
+            <img class="top-[14rem] left-[10rem] sm:left-[16rem] absolute w-20 bounceAnimation1" src="../Images/ethereum.svg" alt="Foster Coin" />
+          </div>
+        <div class="bg-darkBlue -mt-4 py-6 md:py-8 w-full">
+          <div class="flex justify-between mx-auto w-[95%] sm:w-[90%] md:w-[70%] lg:w-[60%] xl:w-[50%] 2xl:w-[40%]">
+            <div class="flex items-center gap-x-1 md:gap-x-2 lg:gap-x-3">
+              <h1 class="font-bold text-accentGreen text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl 2xl:text-4xl">
+                52k+
+              </h1>
+              <div class="text-[0.5rem] text-left text-white sm:text-[0.6rem] md:text-xs lg:text-base">
+                <p>Happy</p>
+                <p>Customers</p>
+              </div>
+            </div>
+            <div class="flex items-center gap-x-1 md:gap-x-2 lg:gap-x-3">
+              <h1 class="font-bold text-accentGreen text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl 2xl:text-4xl">
+                70k+
+              </h1>
+              <div class="text-[0.5rem] text-left text-white sm:text-[0.6rem] md:text-xs lg:text-base">
+                <p>Hours in</p>
+                <p>Business</p>
+              </div>
+            </div>
+            <div class="flex items-center gap-x-1 md:gap-x-2 lg:gap-x-3">
+              <h1 class="font-bold text-accentGreen text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl 2xl:text-4xl">
+                500+
+              </h1>
+              <div class="text-[0.5rem] text-left text-white sm:text-[0.6rem] md:text-xs lg:text-base">
+                <p>Intellectual and</p>
+                <p>Passionate Workers</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <img class="top-[16%] left-[5%] absolute w-[3rem] sm:w-[5rem] md:w-[7rem] lg:w-[9rem] xl:w-[11rem] 2xl:w-[13rem]" src="/Images/landingCoinLeft.svg" alt="A coin" />
+      <img class="right-[3%] bottom-[50%] md:bottom-[60%] absolute w-[2rem] sm:w-[4rem] md:w-[6rem] lg:w-[8rem] xl:w-[10rem]" src="/Images/landingCoinRight.svg" alt="A coin" />
+      <img class="-top-6 xl:-top-8 2xl:-top-10 right-4 absolute w-[6rem] sm:w-[8rem] md:w-[10rem] lg:w-[12rem] xl:w-[14rem] 2xl:w-[20rem]" src="/Images/landingCoinTopRight.svg" alt="A coin" />
+    </div>
+  </section>
+  <section id="aboutUs">
+    <div class="flex md:flex-row flex-col md:justify-between md:items-center gap-y-10 md:gap-y-0 md:gap-x-10 xl:gap-x-14 bg-white px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12 2xl:px-16 py-[3rem] sm:py-[4rem] md:py-[5rem] lg:py-[6rem] xl:py-[7rem] 2xl:py-[8rem]">
+      <div class="md:w-[50%]">
+        <img class="rounded-lg w-full h-full object-cover" src="/Images/aboutUs.jpg" alt="about us" />
+      </div>
+      <div class="flex flex-col gap-y-8 md:w-[50%] text-left">
+        <h1 class="font-bold text-base text-black sm:text-lg md:text-xl lg:text-2xl xl:text-3xl 2xl:text-4xl">What is <span class="text-primarybg-darkBlue">Foster Coin</span></h1>
+        <p class="xl:w-[65%] text-[#48484A] text-xs sm:text-sm lg:text-base">
+          Foster Coin was founded in 2015 by a team of experienced investors
+          and technologists who saw the potential of blockchain technology to
+          transform the financial industry. The company started as a small
+          investment firm focused on cryptocurrency trading, but quickly
+          expanded its operations to include blockchain development, digital
+          asset management, and other related services.
+        </p>
+        <div class="flex items-center gap-x-2 bg-darkBlue px-4 py-3 rounded-lg w-fit text-white text-xs sm:text-sm lg:text-base group">
+          <a href="/about">Read more</a>
+          <i class="ph-caret-right transition group-hover:translate-x-2 duration-500 cursor-pointer ph"></i>
+        </div>
+
+      </div>
+    </div>
+  </section>
+  <section id="whatWeDo">
+    <div class="relative bg-lightBlack px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12 2xl:px-16 py-[3rem] sm:py-[4rem] md:py-[5rem] lg:py-[6rem] xl:py-[7rem] 2xl:py-[8rem]">
+      <div class="top-0 left-0 absolute bg-[url('/Images/Background.svg')] w-full h-full"></div>
+      <h1 class="font-bold text-base text-center text-primaryGreen sm:text-lg md:text-xl lg:text-2xl xl:text-3xl 2xl:text-4xl">What we do</h1>
+      <p class="md:block hidden mt-4 text-center text-white text-xs sm:text-sm md:text-base lg:text-lg 2xl:text-xl">We are opportunistic in our pursuit of deals and will look at deals <br> outside traditional framework</p>
+      <p class="md:hidden mt-4 text-center text-white text-xs sm:text-sm md:text-base lg:text-lg 2xl:text-xl">We are opportunistic in our pursuit of deals and will look at deals outside traditional framework</p>
+      <div class="flex flex-wrap justify-between gap-y-10 mt-12 md:mt-20">
+        <div class="mx-auto p-[1px] rounded-[2.5rem] w-[30%] min-w-[18rem]" style="background: linear-gradient(90deg, rgba(101,100,219,1) 40%, rgba(85,221,224,1) 60%);">
+          <div class="bg-black rounded-[2.5rem] h-[14rem] sm:h-[16rem] lg:h-[18rem] xl:h-[20rem] 2xl:h-[22rem]">
+            <img src="/Images/whatWeDo.svg" alt="What We Do Images" class="rounded-tl-[2.5rem] rounded-tr-[2.5rem] w-full">
+            <div class="bg-lightBlack px-4 md:px-6 2xl:px-8 rounded-bl-[2.5rem] rounded-br-[2.5rem]">
+              <h1 class="font-bold text-sm text-white sm:text-base md:text-lg lg:text-xl xl:text-2xl 2xl:text-3xl">Diverse investment <br>strategies</h1>
+              <p class="mt-2 text-[#AEAEB2] text-xs sm:text-sm xl:text-base">Exploring a wide variety of investment strategies to help client meet their investment goals.</p>
+            </div>
+          </div>
+        </div>
+        <div class="mx-auto p-[1px] rounded-[2.5rem] w-[30%] min-w-[18rem]" style="background: linear-gradient(90deg, rgba(101,100,219,1) 40%, rgba(85,221,224,1) 60%);">
+          <div class="bg-black rounded-[2.5rem] h-[14rem] sm:h-[16rem] lg:h-[18rem] xl:h-[20rem] 2xl:h-[22rem]">
+            <img src="/Images/whatWeDo1.svg" alt="What We Do Images" class="rounded-tl-[2.5rem] rounded-tr-[2.5rem] w-full">
+            <div class="bg-lightBlack px-4 md:px-6 2xl:px-8 rounded-bl-[2.5rem] rounded-br-[2.5rem]">
+              <h1 class="font-bold text-sm text-white sm:text-base md:text-lg lg:text-xl xl:text-2xl 2xl:text-3xl">Thorough due<br>diligence</h1>
+              <p class="mt-2 text-[#AEAEB2] text-xs sm:text-sm xl:text-base">Conducting rigorous research and analysis to ensure sound investment decisions.</p>
+            </div>
+          </div>
+        </div>
+        <div class="mx-auto p-[1px] rounded-[2.5rem] w-[30%] min-w-[18rem]" style="background: linear-gradient(90deg, rgba(101,100,219,1) 40%, rgba(85,221,224,1) 60%);">
+          <div class="bg-black rounded-[2.5rem] h-[14rem] sm:h-[16rem] lg:h-[18rem] xl:h-[20rem] 2xl:h-[22rem]">
+            <img src="/Images/whatWeDo2.svg" alt="What We Do Images" class="rounded-tl-[2.5rem] rounded-tr-[2.5rem] w-full">
+            <div class="bg-lightBlack px-4 md:px-6 2xl:px-8 rounded-bl-[2.5rem] rounded-br-[2.5rem">
+              <h1 class="font-bold text-sm text-white sm:text-base md:text-lg lg:text-xl xl:text-2xl 2xl:text-3xl">Risk<br>management</h1>
+              <p class="mt-2 text-[#AEAEB2] text-xs sm:text-sm xl:text-base">Implementing proactive risk management strategies to minimize potential losses.</p>
+            </div>
+          </div>
+        </div>
+        <div class="mx-auto p-[1px] rounded-[2.5rem] w-[30%] min-w-[18rem]" style="background: linear-gradient(90deg, rgba(101,100,219,1) 40%, rgba(85,221,224,1) 60%);">
+          <div class="bg-black rounded-[2.5rem] h-[14rem] sm:h-[16rem] lg:h-[18rem] xl:h-[20rem] 2xl:h-[22rem]">
+            <img src="/Images/whatWeDo3.svg" alt="What We Do Images" class="rounded-tl-[2.5rem] rounded-tr-[2.5rem] w-full">
+            <div class="bg-lightBlack px-4 md:px-6 2xl:px-8 rounded-bl-[2.5rem] rounded-br-[2.5rem]">
+              <h1 class="font-bold text-sm text-white sm:text-base md:text-lg lg:text-xl xl:text-2xl 2xl:text-3xl">Customized<br>portfolio</h1>
+              <p class="mt-2 text-[#AEAEB2] text-xs sm:text-sm xl:text-base">Tailoring investment portfolios to match the unique needs and goals of each client.</p>
+            </div>
+          </div>
+        </div>
+        <div class="mx-auto p-[1px] rounded-[2.5rem] w-[30%] min-w-[18rem]" style="background: linear-gradient(90deg, rgba(101,100,219,1) 40%, rgba(85,221,224,1) 60%);">
+          <div class="bg-black rounded-[2.5rem] h-[14rem] sm:h-[16rem] lg:h-[18rem] xl:h-[20rem] 2xl:h-[22rem]">
+            <img src="/Images/whatWeDo4.svg" alt="What We Do Images" class="rounded-tl-[2.5rem] rounded-tr-[2.5rem] w-full">
+            <div class="bg-lightBlack -mt-[2rem] px-4 md:px-6 2xl:px-8 rounded-bl-[2.5rem] rounded-br-[2.5rem]">
+              <h1 class="font-bold text-sm text-white sm:text-base md:text-lg lg:text-xl xl:text-2xl 2xl:text-3xl">Industry<br>expertise</h1>
+              <p class="mt-2 text-[#AEAEB2] text-xs sm:text-sm xl:text-base">Using our expertise to identify investment opportunities and stay ahead of market trends.</p>
+            </div>
+          </div>
+        </div>
+        <div class="mx-auto p-[1px] rounded-[2.5rem] w-[30%] min-w-[18rem]" style="background: linear-gradient(90deg, rgba(101,100,219,1) 40%, rgba(85,221,224,1) 60%);">
+          <div class="bg-black rounded-[2.5rem] h-[14rem] sm:h-[16rem] lg:h-[18rem] xl:h-[20rem] 2xl:h-[22rem]">
+            <img src="/Images/whatWeDo5.svg" alt="What We Do Images" class="rounded-tl-[2.5rem] rounded-tr-[2.5rem] w-full">
+            <div class="bg-lightBlack px-4 md:px-6 2xl:px-8 rounded-bl-[2.5rem] rounded-br-[2.5rem]">
+              <h1 class="font-bold text-sm text-white sm:text-base md:text-lg lg:text-xl xl:text-2xl 2xl:text-3xl">Partnership<br>approach</h1>
+              <p class="mt-2 text-[#AEAEB2] text-xs sm:text-sm xl:text-base">Working with clients to build long-term partnerships based on trust and transparency.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <img class="top-10 xl:top-12 2xl:top-14 right-4 absolute w-[6rem] sm:w-[8rem] md:w-[10rem] lg:w-[12rem] xl:w-[14rem] 2xl:w-[20rem]" src="/Images/landingCoinTopRight.svg" alt="A coin">
+    </div>
+  </section>
+  <section id="Safe Guarding Your Funds">
+    <div class="relative bg-white px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12 2xl:px-16 py-[3rem] sm:py-[4rem] md:py-[5rem] lg:py-[6rem] xl:py-[7rem] 2xl:py-[8rem]">
+      <h1 class="font-bold text-lightBlack text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl 2xl:text-3xl">Our mining encompasses</h1>
+      <div class="flex md:flex-row flex-col md:justify-between md:items-center gap-y-10 md:gap-y-0 mx-auto">
+        <div class="flex flex-wrap gap-6 mt-8 md:w-[54%]">
+          <div class="relative p-[1px] rounded-2xl w-[30%] min-w-[13rem] h-60" style="background: linear-gradient(90deg, rgba(101,100,219,1) 40%, rgba(85,221,224,1) 60%);">
+            <img class="rounded-2xl w-full h-full object-cover" src="/Images/diamond.svg" alt="Diamond Image">
+            <p class="bottom-4 left-4 absolute p-1 rounded-lg font-bold bg-primatext-primaryGreen text-lightBlack text-xs sm:text-sm md:text-base xl:text-xl">Diamond</p>
+          </div>
+          <div class="relative p-[1px] rounded-2xl w-[30%] min-w-[13rem] h-60" style="background: linear-gradient(90deg, rgba(101,100,219,1) 40%, rgba(85,221,224,1) 60%);">
+            <img class="rounded-2xl w-full h-full object-cover" src="/Images/gold.svg" alt="Gold Image">
+            <p class="bottom-4 left-4 absolute p-1 rounded-lg font-bold bg-primatext-primaryGreen text-lightBlack text-xs sm:text-sm md:text-base xl:text-xl">Gold</p>
+          </div>
+          <div class="relative p-[1px] rounded-2xl w-[30%] min-w-[13rem] h-60" style="background: linear-gradient(90deg, rgba(101,100,219,1) 40%, rgba(85,221,224,1) 60%);">
+            <img class="rounded-2xl w-full h-full object-cover" src="/Images/platinum.svg" alt="Platinum Image">
+            <p class="bottom-4 left-4 absolute p-1 rounded-lg font-bold bg-primatext-primaryGreen text-lightBlack text-xs sm:text-sm md:text-base xl:text-xl">Platinum</p>
+          </div>
+          <div class="relative p-[1px] rounded-2xl w-[30%] min-w-[13rem] h-60" style="background: linear-gradient(90deg, rgba(101,100,219,1) 40%, rgba(85,221,224,1) 60%);">
+            <img class="rounded-2xl w-full h-full object-cover" src="/Images/crudeoil.svg" alt="Crude oil Image">
+            <p class="bottom-4 left-4 absolute p-1 rounded-lg font-bold bg-primatext-primaryGreen text-lightBlack text-xs sm:text-sm md:text-base xl:text-xl">Crude oil</p>
+          </div>
+          <div class="relative p-[1px] rounded-2xl w-[30%] min-w-[13rem] h-60" style="background: linear-gradient(90deg, rgba(101,100,219,1) 40%, rgba(85,221,224,1) 60%);">
+            <img class="rounded-2xl w-full h-full object-cover" src="/Images/steel.svg" alt="Steel Image">
+            <p class="bottom-4 left-4 absolute p-1 rounded-lg font-bold bg-primatext-primaryGreen text-lightBlack text-xs sm:text-sm md:text-base xl:text-xl">Steel</p>
+          </div>
+        </div>
+        <div class="md:w-[45%]">
+          <h1 class="font-bold text-base text-lightBlack sm:text-lg md:text-xl lg:text-2xl xl:text-3xl 2xl:text-4xl">Safeguarding your funds</h1>
+          <p class="mt-8 xl:w-[65%] text-[#636366] text-xs sm:text-sm lg:text-base">Foster Coin Utilizes Exceptional Alternative Revenue Streams, Tailored To Suit The Current Global Economic Landscape. In Addition To Cryptocurrencies, We Engage In Mining Operations And Diverse Investments Worldwide, Ensuring Both Profitability And Investors' Fund Security.</p>
+        </div>
+      </div>
+      <img class="right-4 xl:right-8 bottom-[90%] md:bottom-10 xl:bottom-12 2xl:bottom-14 absolute w-[3rem] sm:w-[5rem] md:w-[7rem] lg:w-[9rem] xl:w-[11rem] 2xl:w-[13rem]" src="/Images/landingCoinLeft.svg" alt="A coin">
+    </div>
+  </section>
+  <section id="howToStart">
+    <div class="relative bg-white px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12 2xl:px-16 pb-[3rem] sm:pb-[4rem] md:pb-[5rem] lg:pb-[6rem] xl:pb-[7rem] 2xl:pb-[8rem]">
+      <div class="flex md:flex-row flex-col md:justify-between md:items-center gap-y-10 md:gap-x-10 md:gap-y-0 xl:gap-x-14">
+        <div class="flex flex-wrap gap-y-6 mt-8 md:w-[50%]">
+          <h1 class="font-bold text-base text-lightBlack sm:text-lg md:text-xl lg:text-2xl xl:text-3xl 2xl:text-4xl">Steps to Maximize your profit</h1>
+          <p class="text-[#636366] text-xs sm:text-sm md:text-base lg:text-lg 2xl:text-xl">A 5-Step Guide,For Increasing Your Investment Returns And Achieving Financial Success.</p>
+          <div class="mt-6 p-[1px] rounded-xl w-full group" style="background: linear-gradient(90deg, rgba(101,100,219,0.5) 40%, rgba(85,221,224,0.5) 60%);">
+            <div class="bg-white rounded-xl">
+              <div class="bg-darkBlue bg-opacity-20 hover:bg-opacity-100 px-4 md:px-8 py-2 rounded-xl duration-500">
+                <div class="flex justify-between items-center">
+                  <p class="group-hover:text-accentGreen font-bold text-primarybg-darkBlue text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl duration-500">Create an account</p>
+                  <p class="group-hover:block hidden text-[0.6rem] text-white xl:text-sm md:text-xs duration-500">Step 1 of 5</p>
+                </div>
+                <p class="group-hover:block hidden mt-4 text-white text-xs sm:text-sm lg:text-base duration-500">Register For An Account With Your Email Address, A Phone Number And A Secure Password.</p>
+              </div>
+            </div>
+          </div>
+          <div class="p-[1px] rounded-xl w-full group" style="background: linear-gradient(90deg, rgba(101,100,219,0.5) 40%, rgba(85,221,224,0.5) 60%);">
+            <div class="bg-white rounded-xl">
+              <div class="bg-darkBlue bg-opacity-20 hover:bg-opacity-100 px-4 md:px-8 py-2 rounded-xl duration-500">
+                <div class="flex justify-between items-center">
+                  <p class="group-hover:text-accentGreen font-bold text-primarybg-darkBlue text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl duration-500">Login</p>
+                  <p class="group-hover:block hidden text-[0.6rem] text-white xl:text-sm md:text-xs duration-500">Step 2 of 5</p>
+                </div>
+                <p class="group-hover:block hidden mt-4 text-white text-xs sm:text-sm lg:text-base duration-500">Enter Your Registered Email Address And Password To Login To Your Account.</p>
+              </div>
+            </div>
+          </div>
+          <div class="p-[1px] rounded-xl w-full group" style="background: linear-gradient(90deg, rgba(101,100,219,0.5) 40%, rgba(85,221,224,0.5) 60%);">
+            <div class="bg-white rounded-xl">
+              <div class="bg-darkBlue bg-opacity-20 hover:bg-opacity-100 px-4 md:px-8 py-2 rounded-xl duration-500">
+                <div class="flex justify-between items-center">
+                  <p class="group-hover:text-accentGreen font-bold text-primarybg-darkBlue text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl duration-500">Deposit</p>
+                  <p class="group-hover:block hidden text-[0.6rem] text-white xl:text-sm md:text-xs duration-500">Step 3 of 5</p>
+                </div>
+                <p class="group-hover:block hidden mt-4 text-white text-xs sm:text-sm lg:text-base duration-500">Choose Your Preferred Deposit Method And Enter The Amount You Wish To Invest.</p>
+              </div>
+            </div>
+          </div>
+          <div class="p-[1px] rounded-xl w-full group" style="background: linear-gradient(90deg, rgba(101,100,219,0.5) 40%, rgba(85,221,224,0.5) 60%);">
+            <div class="bg-white rounded-xl">
+              <div class="bg-darkBlue bg-opacity-20 hover:bg-opacity-100 px-4 md:px-8 py-2 rounded-xl duration-500">
+                <div class="flex justify-between items-center">
+                  <p class="group-hover:text-accentGreen font-bold text-primarybg-darkBlue text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl duration-500">Invest</p>
+                  <p class="group-hover:block hidden text-[0.6rem] text-white xl:text-sm md:text-xs duration-500">Step 4 of 5</p>
+                </div>
+                <p class="group-hover:block hidden mt-4 text-white text-xs sm:text-sm lg:text-base duration-500">Browse The Available Share Options And Select The One That Best Fits Your Financial Goals.</p>
+              </div>
+            </div>
+          </div>
+          <div class="p-[1px] rounded-xl w-full group" style="background: linear-gradient(90deg, rgba(101,100,219,0.5) 40%, rgba(85,221,224,0.5) 60%);">
+            <div class="bg-white rounded-xl">
+              <div class="bg-darkBlue bg-opacity-20 hover:bg-opacity-100 px-4 md:px-8 py-2 rounded-xl duration-500">
+                <div class="flex justify-between items-center">
+                  <p class="group-hover:text-accentGreen font-bold text-primarybg-darkBlue text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl duration-500">Withdraw your profit.</p>
+                  <p class="group-hover:block hidden text-[0.6rem] text-white xl:text-sm md:text-xs duration-500">Step 5 of 5</p>
+                </div>
+                <p class="group-hover:block hidden mt-4 text-white text-xs sm:text-sm lg:text-base duration-500">Monitor Your Investment Performance Through Your Account Dashboard, And When You're Ready To Withdraw Your Profits, Navigate To The Withdrawal Section.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="p-4 sm:p-6 md:p-8 lg:p-10 xl:p-12 rounded-[1.5rem] xl:rounded-[2.5rem] md:w-[50%]" style="background: rgb(180,224,85); background: linear-gradient(25deg, rgba(180,224,85,0.20211834733893552) 30%, rgba(20,92,203,0.20211834733893552) 70%);">
+          <img src="/Images/signUp.png" class="w-full h-full object-cover" alt="Sign Up Page">
+        </div>
+      </div>
+    </div>
+  </section>
+  <section id="whyChooseUs">
+    <div class="relative bg-white px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12 2xl:px-16 pb-[3rem] sm:pb-[4rem] md:pb-[5rem] lg:pb-[6rem] xl:pb-[7rem] 2xl:pb-[8rem]">
+      <div class="flex md:flex-row flex-col md:justify-between md:items-center gap-y-5 md:gap-y-0 md:gap-x-10 xl:gap-x-14">
+        <div class="md:w-[60%]">
+          <div class="xl:w-[90%]">
+            <h1 class="font-bold text-base text-lightBlack sm:text-lg md:text-xl lg:text-2xl xl:text-3xl 2xl:text-4xl"><span class="text-darkBlue">Foster Coin:</span> Committed Adherence to Financial Regulatory Standards</h1>
+            <p class="mt-2 text-[#636366] text-xs sm:text-sm md:text-base lg:text-lg 2xl:text-xl">Navigating Financial Waters with Integrity and Compliance</p>
+            <div class="flex flex-col gap-y-5 mt-10 text-[#636366] text-xs sm:text-sm lg:text-base">
+              <p>At Foster Coin, we pride ourselves on a steadfast commitment to upholding the highest standards of financial integrity and compliance. Aligned with renowned regulatory bodies such as the Securities and Exchange Commission (SEC), the Federal Reserve, and the Commodity Futures Trading Commission (CFTC), our company operates within a framework that prioritizes transparency, accountability, and ethical practices.</p>
+              <p>Our financial strategies and investment activities undergo meticulous scrutiny to ensure alignment with the regulatory guidelines set forth by these esteemed agencies. By navigating the dynamic financial landscape with vigilance, Foster Coin aims not only to meet but to exceed the expectations outlined by these regulatory bodies, fostering trust and confidence among our valued stakeholders.</p>
+              <p>Through a continuous commitment to compliance, we strive to contribute to the overall stability and integrity of the financial system, upholding the principles set by regulatory authorities. At Foster Coin, we view regulatory compliance not just as a requirement but as a cornerstone in building a sustainable and trustworthy financial future for all.</p>
+            </div>
+          </div>
+
+        </div>
+        <div class="flex flex-col gap-y-4 md:mt-8 md:w-[40%]">
+          <h1 class="font-bold text-lightBlack text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl 2xl:text-3xl">Why Choose Us</h1>
+          <div class="flex items-center gap-x-2 mt-4">
+            <div class="bg-darkBlue rounded-[50%] w-3 h-3 animate-pulse"></div>
+            <p class="font-bold text-primarybg-darkBlue text-xs sm:text-sm lg:text-base">Advanced Security Measures</p>
+          </div>
+          <div class="flex items-center gap-x-2 mt-4">
+            <div class="bg-darkBlue rounded-[50%] w-3 h-3 animate-pulse"></div>
+            <p class="font-bold text-primarybg-darkBlue text-xs sm:text-sm lg:text-base">User-friendly Interface</p>
+          </div>
+          <div class="flex items-center gap-x-2 mt-4">
+            <div class="bg-darkBlue rounded-[50%] w-3 h-3 animate-pulse"></div>
+            <p class="font-bold text-primarybg-darkBlue text-xs sm:text-sm lg:text-base">Wide Range Of Cryptocurrencies Measures</p>
+          </div>
+          <div class="flex items-center gap-x-2 mt-4">
+            <div class="bg-darkBlue rounded-[50%] w-3 h-3 animate-pulse"></div>
+            <p class="font-bold text-primarybg-darkBlue text-xs sm:text-sm lg:text-base">Expert Support</p>
+          </div>
+          <div class="flex items-center gap-x-2 mt-4">
+            <div class="bg-darkBlue rounded-[50%] w-3 h-3 animate-pulse"></div>
+            <p class="font-bold text-primarybg-darkBlue text-xs sm:text-sm lg:text-base">Low Fees</p>
+          </div>
+          <a href="/create" class="bg-darkBlue mt-4 py-2 md:py-3 rounded-md w-[12rem] text-center text-white text-xs sm:text-sm lg:text-base hover:-translate-x-2 duration-500">Get Started
+          </a>
+        </div>
+      </div>
+      <img src="/Images/landingCoinRight.svg" class="top-0 right-[3%] absolute w-[2rem] sm:w-[4rem] md:w-[6rem] lg:w-[8rem] xl:w-[10rem]" alt="A coin">
+    </div>
+  </section>
+  <section id="testimonial">
+    <div class="relative bg-[#F1FFCF] px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12 2xl:px-16 py-[3rem] sm:py-[4rem] md:py-[5rem] lg:py-[6rem] xl:py-[7rem] 2xl:py-[8rem] text-center">
+      <h1 class="font-bold text-base text-lightBlack sm:text-lg md:text-xl lg:text-2xl xl:text-3xl 2xl:text-4xl">Some of our investor's reviews</h1>
+      <p class="md:hidden mt-2 font-medium text-[#636366] text-[0.65rem]">Some Of Our Investors Have Provided Valuable Feedback On Their Experiences With Our Company. </p>
+      <p class="md:block hidden mt-2 font-medium text-[#636366] text-sm lg:text-base">Some Of Our Investors Have Provided Valuable Feedback On Their <br> Experiences With Our Company. </p>
+      <div id="carousel" class="relative overflow-hidden">
+        <div class="flex transition-transform duration-500 ease-in-out">
+          <div id="testimonial 1" class="w-full shrink-0">
+            <div class="flex justify-center mt-10">
+              <div class="w-[90%] sm:w-[80%] md:w-[70%] lg:w-[60%] xl:w-[w-[50%] font-medium text-[#020100] text-xs sm:text-sm lg:text-base xl:text-xl 2xl:text-2xl">
+                <p>"Foster Coin is a reliable and trustworthy investment
+                  platform. The team is knowledgeable, and the platform is
+                  user-friendly and secure.”</p>
+              </div>
+            </div>
+            <div class="mx-auto mt-10 rounded-[50%] w-10 sm:w-14 md:w-20 h-10 sm:h-14 md:h-20"><img class="rounded-[50%]" class="w-full h-full object-cover" src="/Images/testimonial 1.png" alt="Investors Image"></div>
+            <div class="flex flex-col gap-y-1 mx-auto mt-3 text-center">
+              <p class="font-semibold text-lightBlack text-xs sm:text-sm lg:text-base xl:text-lg">Kingston Rowland</p>
+              <p class="text-[#48484A] text-[0.6rem] lg:text-xs">Financial Analyst</p>
+            </div>
+          </div>
+          <div id="testimonial 2" class="w-full shrink-0">
+            <div class="flex justify-center mt-10">
+              <div class="w-[90%] sm:w-[80%] md:w-[70%] lg:w-[60%] xl:w-[w-[50%] font-medium text-[#020100] text-xs sm:text-sm lg:text-base xl:text-xl 2xl:text-2xl">
+                <p>“Investing with Foster Coin was easy and straightforward.
+                  Their customer support team was always available to answer my
+                  questions.”</p>
+              </div>
+            </div>
+            <div class="mx-auto mt-10 rounded-[50%] w-10 sm:w-14 md:w-20 h-10 sm:h-14 md:h-20"><img class="rounded-[50%]" class="w-full h-full object-cover" src="/Images/testimonial 2.png" alt="Investors Image"></div>
+            <div class="flex flex-col gap-y-1 mx-auto mt-3 text-center">
+              <p class="font-semibold text-lightBlack text-xs sm:text-sm lg:text-base xl:text-lg">Pauleen Tammie</p>
+              <p class="text-[#48484A] text-[0.6rem] lg:text-xs">Human Resources Manager</p>
+            </div>
+          </div>
+          <div id="testimonial 3" class="w-full shrink-0">
+            <div class="flex justify-center mt-10">
+              <div class="w-[90%] sm:w-[80%] md:w-[70%] lg:w-[60%] xl:w-[w-[50%] font-medium text-[#020100] text-xs sm:text-sm lg:text-base xl:text-xl 2xl:text-2xl">
+                <p>"Foster Coin is the best investment platform I have come
+                  across. Their fees are competitive, and their commitment to
+                  customer service is impressive.”</p>
+              </div>
+            </div>
+            <div class="mx-auto mt-10 rounded-[50%] w-10 sm:w-14 md:w-20 h-10 sm:h-14 md:h-20"><img class="rounded-[50%]" class="w-full h-full object-cover" src="/Images/testimonial 3.png" alt="Investors Image"></div>
+            <div class="flex flex-col gap-y-1 mx-auto mt-3 text-center">
+              <p class="font-semibold text-lightBlack text-xs sm:text-sm lg:text-base xl:text-lg">Puneet Prasad</p>
+              <p class="text-[#48484A] text-[0.6rem] lg:text-xs">Business Development Manager</p>
+            </div>
+          </div>
+          <div id="testimonial 4" class="w-full shrink-0">
+            <div class="flex justify-center mt-10">
+              <div class="w-[90%] sm:w-[80%] md:w-[70%] lg:w-[60%] xl:w-[w-[50%] font-medium text-[#020100] text-xs sm:text-sm lg:text-base xl:text-xl 2xl:text-2xl">
+                <p>“I highly recommend Foster Coin to anyone looking to invest in
+                  cryptocurrency. Their team is passionate and knowledgeable,
+                  and they truly care about the success of their clients.”</p>
+              </div>
+            </div>
+            <div class="mx-auto mt-10 rounded-[50%] w-10 sm:w-14 md:w-20 h-10 sm:h-14 md:h-20"><img class="rounded-[50%]" class="w-full h-full object-cover" src="/Images/testimonial 4.png" alt="Investors Image"></div>
+            <div class="flex flex-col gap-y-1 mx-auto mt-3 text-center">
+              <p class="font-semibold text-lightBlack text-xs sm:text-sm lg:text-base xl:text-lg">Jack William</p>
+              <p class="text-[#48484A] text-[0.6rem] lg:text-xs">Operations Manager</p>
+            </div>
+          </div>
+          <div id="testimonial 5" class="w-full shrink-0">
+            <div class="flex justify-center mt-10">
+              <div class="w-[90%] sm:w-[80%] md:w-[70%] lg:w-[60%] xl:w-[w-[50%] font-medium text-[#020100] text-xs sm:text-sm lg:text-base xl:text-xl 2xl:text-2xl">
+                <p>"Foster Coin has helped me achieve my investment goals. Their
+                  platform is diverse and innovative, and their customer service
+                  is top-notch.”</p>
+              </div>
+            </div>
+            <div class="mx-auto mt-10 rounded-[50%] w-10 sm:w-14 md:w-20 h-10 sm:h-14 md:h-20"><img class="rounded-[50%]" class="w-full h-full object-cover" src="/Images/testimonial 5.png" alt="Investors Image"></div>
+            <div class="flex flex-col gap-y-1 mx-auto mt-3 text-center">
+              <p class="font-semibold text-lightBlack text-xs sm:text-sm lg:text-base xl:text-lg">Laura Alphonsine</p>
+              <p class="text-[#48484A] text-[0.6rem] lg:text-xs">Marketing Manager</p>
+            </div>
+          </div>
+        </div>
+        <div id="prevBtn" class="top-1/2 left-0 absolute flex justify-center items-center border-[#8E8E93] border rounded-[50%] w-5 sm:w-6 md:w-8 h-5 sm:h-6 md:h-8 transition hover:-translate-x-2 duration-500 cursor-pointer shrink-0">
+            <i class="ph-caret-left ph"></i>
+        </div>
+        <div id="nextBtn" class="top-1/2 right-0 absolute flex justify-center items-center border-[#8E8E93] border rounded-[50%] w-5 sm:w-6 md:w-8 h-5 sm:h-6 md:h-8 transition hover:translate-x-2 duration-500 cursor-pointer shrink-0">
+            <i class="ph-caret-right ph"></i>
+        </div>
+      </div>
+      <img src="/Images/landingCoinLeft.svg" alt="A coin" class="bottom-[16%] left-[5%] absolute w-[3rem] sm:w-[5rem] md:w-[7rem] lg:w-[9rem] xl:w-[11rem] 2xl:w-[13rem]">
+      <img src="/Images/landingCoinTopRight.svg" alt="A coin" class="-top-6 xl:-top-8 2xl:-top-10 right-4 absolute w-[6rem] sm:w-[8rem] md:w-[10rem] lg:w-[12rem] xl:w-[14rem] 2xl:w-[20rem]">
+    </div>
+  </section>
+  <section id="contactUS">
+    <div class="bg-white px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12 2xl:px-16 py-[3rem] sm:py-[4rem] md:py-[5rem] lg:py-[6rem] xl:py-[7rem] 2xl:py-[8rem]">
+      <div class="flex md:flex-row flex-col md:justify-between gap-y-5 md:gap-y-0 md:gap-x-10 xl:gap-x-14">
+        <div class="flex flex-col gap-y-10 md:w-[50%]">
+          <h1 class="font-bold text-base text-lightBlack sm:text-lg md:text-xl lg:text-2xl xl:text-3xl 2xl:text-4xl">Contact us</h1>
+          <p class="text-[#636366] text-xs sm:text-sm md:text-base lg:text-lg 2xl:text-xl">Have some question about our product? fill out the form and our customer support will reach out to you.</p>
+          <img src="/Images/contactUs.svg" class="rounded-[1.5rem] md:rounded-[2.5rem] w-full h-full object-cover" alt="Contact Us Image">
+        </div>
+        <div class="p-[0.6px] rounded-[1.5rem] md:w-[50%]" style="background: linear-gradient(90deg, rgba(101,100,219,1) 40%, rgba(85,221,224,1) 60%);">
+          <div class="bg-white px-4 lg:px-8 pt-8 rounded-[1.5rem] w-full h-full">
+            <h1 class="mt-4 lg:mt-10 font-semibold text-center text-lightBlack text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl 2xl:text-3xl">Tell us how we can help</h1>
+            <form id="email-form" class="mt-14 text-lightBlack text-xs sm:text-sm lg:text-base">
+              <div class="flex justify-between gap-x-2 lg:gap-x-5">
+                <div class="flex flex-col gap-y-2 w-[45%]">
+                  <label for="firstName" class="cursor-pointer">First Name</label>
+                  <input required placeholder="Enter Your First Name" type="text" name="firstName" id="firstName" class="bg-inherit p-2 md:p-3 border border-lightBlack focus:border-none rounded-lg xl:placeholder:text-sm md:placeholder:text-xs placeholder:text-[10px] focus:outline-primaryBlue outline-none">
+                </div>
+                <div class="flex flex-col gap-y-2 w-[45%]">
+                  <label for="lastName" class="cursor-pointer">Last Name</label>
+                  <input required placeholder="Enter Your Last Name" type="text" name="lastName" id="lastName" class="bg-inherit p-2 md:p-3 border border-lightBlack focus:border-none rounded-lg xl:placeholder:text-sm md:placeholder:text-xs placeholder:text-[10px] focus:outline-primaryBlue outline-none">
+                </div>
+              </div>
+              <div class="flex flex-col gap-y-2 mt-14">
+                <label for="email" class="cursor-pointer">Email Address</label>
+                <input required placeholder="Enter Your Email Address" type="email" name="email" id="email" class="bg-inherit p-2 md:p-3 border border-lightBlack focus:border-none rounded-lg xl:placeholder:text-sm md:placeholder:text-xs placeholder:text-[10px] focus:outline-primaryBlue outline-none">
+              </div>
+              <div class="flex flex-col gap-y-2 mt-14">
+                <label for="description" class="cursor-pointer">Description</label>
+                <textarea required placeholder="Enter A Description" name="description" id="description" minlength="50" maxlength="200" class="bg-inherit p-4 border border-lightBlack focus:border-none rounded-lg xl:placeholder:text-sm md:placeholder:text-xs placeholder:text-[10px] focus:outline-primaryBlue outline-none resize-none"></textarea>
+              </div>
+              <input type="submit" value="Send Message" class="bg-darkBlue mt-14 mb-10 p-2 md:p-3 rounded-lg w-full text-center text-white transition hover:-translate-y-1 duration-300 cursor-pointer">
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <%- include("partials/_cta"); -%>
+  <section id="footer">
+    <%- include("partials/_footer"); -%>
+  </section>
+</body>
+
+</html>

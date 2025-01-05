@@ -1,0 +1,49 @@
+
+<!-- Header -->
+<header class="flex justify-between items-center border-primaryBlue bg-blueishWhite p-4 border-b text-xs md:text-sm xl:text-base">
+  <div class="ml-10 lg:ml-0">
+    <% 
+        const hour = new Date().getHours();
+        const greeting = hour < 12 ? "Good Morning" : hour < 18 ? "Good Afternoon" : "Good Evening"; 
+      %>
+    <div>
+      <div class="flex items-center gap-x-1">
+        <% if (hour < 12) { %>
+        <i class="ph-fill ph-sun-horizon text-[#EFBC16] text-xl md:text-2xl xl:text-3xl"></i>
+        <% } else if (hour < 18) { %>
+        <i class="ph-fill ph-sun text-xl text-yellow-600 md:text-2xl xl:text-3xl"></i>
+        <% } else { %>
+        <i class="ph-cloud-sun ph-fill text-xl text-yellow-800 md:text-2xl xl:text-3xl"></i>
+        <% } %>
+        <div>
+          <h1 class="font-bold text-sm md:text-base xl:text-lg"><%= greeting %>, </h1>
+          <h1 class="-mt-1 text-[10px] xl:text-sm md:text-xs"><%= userName %>!</h1>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="relative">
+    <button id="dropdown-toggle" class="flex items-center gap-x-2 bg-white hover:bg-darkBlue p-2 rounded-lg hover:text-white focus:outline-none">
+      <i class="ph-user text-xl ph"></i>
+      <span class="lg:inline hidden">Menu</span>
+    </button>
+    <div id="dropdown-menu" class="right-0 absolute hidden bg-white shadow-lg mt-2 rounded-lg w-36 md:w-40 xl:w-48">
+      <a href="/user/profile" class="block hover:bg-gray-100 px-4 py-2">Profile</a>
+      <a href="/user/invest" class="block hover:bg-gray-100 px-4 py-2">Invest</a>
+      <a href="/user/deposit" class="block hover:bg-gray-100 px-4 py-2">Deposit</a>
+      <a href="/user/withdraw" class="block hover:bg-gray-100 px-4 py-2">Withdraw</a>
+    </div>
+  </div>
+</header>
+
+
+
+<script>
+  // Toggle Dropdown
+  const dropdownToggle = document.getElementById('dropdown-toggle');
+  const dropdownMenu = document.getElementById('dropdown-menu');
+
+  dropdownToggle.addEventListener('click', () => {
+    dropdownMenu.classList.toggle('hidden');
+  });
+</script>

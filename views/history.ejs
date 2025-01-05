@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>History</title>
+  <%- include("partials/_seo"); -%>
+</head>
+
+<body class="bg-blueishWhite text-xs md:text-sm xl:text-base main">
+  <%- include("partials/_header", { userName: user.fullName }); -%>
+  <%- include("partials/_userSidebar", { page: currentPage }); -%>
+  <section class="flex flex-row justify-between items-center m-4">
+    <p class="font-bold text-lg text-lightBlack md:text-xl lg:text-2xl xl:text-3xl">History</p>
+    <div>
+      <p class="text-gray-700">Your Balance</p>
+      <h2 class="font-bold text-center text-lg text-primaryGreen md:text-xl lg:text-2xl xl:text-3xl">$<%= userBalance %></h2>
+    </div>
+  </section>
+  <section class="p-4">
+    <p class="font-bold text-lightBlack text-sm md:text-base xl:text-lg">All Transactions</p>
+      <p class="text-darkBlue">View all the transactions made on your account.</p>
+    <div class="border-[#767680] bg-white mt-4 p-4 border border-opacity-10 rounded-2xl min-h-[80%] overflow-y-auto">
+      <% if (transactions.length === 0) { %>
+      <p class="text-red-600 text-sm md:text-base">No Transactions Found.</p>
+      <% } else { %>
+      <% transactions.forEach(transaction => { %>
+      <% 
+              const typeMapping = {
+                deposit: "Deposit",
+                withdrawal: "Withdrawal",
+                investment: "Investment",
+                penalty: "Penalty",
+                earning: "Earning",
+                bonus: "Bonus"
+              };
+              const transactionType = transaction.type || "unknown";
+              const transactionTypeName = typeMapping[transactionType.toLowerCase()] || "Unknown";
+            %>
+      <a href="/user/transaction?id=<%= transaction.id %>&type=<%= transactionType %>" class="block">
+        <%- include('partials/_transaction', {
+                iconBg: transactionType === "deposit" ? "bg-[#2DE300]" :
+                        transactionType === "withdrawal" ? "bg-[#DB6464]" :
+                        transactionType === "investment" ? "bg-[#712F79]" :
+                        transactionType === "penalty" ? "bg-red-600" :
+                        transactionType === "earning" ? "bg-[#DBFE87]" :
+                        "bg-gray-300",
+                iconSrc: transactionType === "deposit" ? "/Images/deposit.svg" :
+                         transactionType === "withdrawal" ? "/Images/withdraw.svg" :
+                         transactionType === "investment" ? "/Images/investment.svg" :
+                         transactionType === "penalty" ? "/Images/withdraw.svg" :
+                         transactionType === "earning" ? "/Images/earn.svg" :
+                         "/Images/earn.svg",
+                iconAlt: transactionTypeName + " Icon",
+                textColor: "text-[#141619]",
+                description: `${transactionTypeName} via ${transactionType ==="investment" ? transaction.plan + " Plan" : transaction.coin || 'Administration'}`,
+                amountColor: transactionType === "deposit" || transactionType === "earning" ? "text-[#20BF55]" : "text-[#FF5964]",
+                amountSign: transactionType === "deposit" || transactionType === "earning" ? "+" : "-",
+                amount: transaction.amount,
+                date: transaction.createdAt.toLocaleString("en-US", { year: "numeric", month: "short", day: "numeric", hour: "2-digit", minute: "2-digit", second: "2-digit", hour12: false })
+              }) %>
+      </a>
+      <% }) %>
+      <% } %>
+    </div>
+
+  </section>
+</body>
+
+</html>

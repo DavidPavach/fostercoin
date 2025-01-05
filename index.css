@@ -1,0 +1,179 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: "Inter", serif;
+  font-optical-sizing: auto;
+}
+
+/* The Nav Bar For Small Screen */
+.hamburger {
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  transition: all 0.25s;
+  position: relative;
+  border-radius: 0.3rem;
+}
+.hamburger-top,
+.hamburger-middle,
+.hamburger-down {
+  position: absolute;
+  top: 10px;
+  left: 8px;
+  width: 25px;
+  height: 3px;
+  background-color: #145CCB;
+  transform: rotate(0);
+  transition: all 0.5s;
+}
+
+.hamburger-middle {
+  transform: translateY(7px);
+}
+.hamburger-down {
+  transform: translateY(14px);
+}
+.open {
+  transform: rotate(90deg);
+  transform: translateY(0px);
+}
+.open .hamburger-top {
+  transform: rotate(45deg) translateY(6px) translate(6px);
+}
+.open .hamburger-middle {
+  display: none;
+}
+.open .hamburger-down {
+  transform: rotate(-45deg) translateY(6px) translate(-6px);
+}
+
+/* Hero Section */
+.bounceAnimation {
+  animation: floatUpDown 5s ease-in-out infinite;
+}
+@keyframes floatUpDown {
+  0%,
+  25%,
+  100% {
+    transform: translateY(0);
+  }
+  50%,
+  75% {
+    transform: translateY(-20px);
+  }
+}
+.bounceAnimation1 {
+  animation: floatDownUp 5s ease-in-out infinite;
+}
+@keyframes floatDownUp {
+  0%,
+  25%,
+  100% {
+    transform: translateY(0);
+  }
+  50%,
+  75% {
+    transform: translateY(20px);
+  }
+}
+.moveAnimation {
+  animation: moveR 5s ease-in-out infinite;
+}
+@keyframes moveR {
+  0%,
+  25%,
+  100% {
+    transform: translateX(0);
+  }
+  50%,
+  75% {
+    transform: translateX(-20px);
+  }
+}
+.moveAnimation1 {
+  animation: moveL 5s ease-in-out infinite;
+}
+@keyframes moveL {
+  0%,
+  25%,
+  100% {
+    transform: translateX(0);
+  }
+  50%,
+  75% {
+    transform: translateX(20px);
+  }
+}
+
+/* Frequently Asked Questions */
+.collapsible {
+  color: #1f62b8;
+  cursor: pointer;
+  padding: 18px;
+  width: 90%;
+  border-bottom: 2px solid grey;
+  text-align: left;
+  outline: none;
+}
+
+.collapsible.active {
+  color: #3ea13f;
+}
+
+.collapsible:after {
+  content: "\002B";
+  color: black;
+  font-weight: bolder;
+  float: right;
+  margin-left: 5px;
+}
+
+.active:after {
+  content: "\2212";
+  color: #3ea13f;
+}
+
+.content {
+  padding: 0 18px;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+  width: 90%;
+  color:#515253;
+}
+
+/* Main-Page */
+.main {
+  width: calc(100% - 280px);
+  float: right;
+}
+@media screen and (max-width: 1023px) {
+  .main {
+    width: 100%;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #F4F6FF;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #12a2e8;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #1f62b8;
+}
+
+/* For Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #12a2e8 #F4F6FF;
+}

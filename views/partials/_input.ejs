@@ -1,0 +1,9 @@
+<div class="relative mb-4">
+  <label for="<%= id %>" class="block font-medium text-gray-700 cursor-pointer"><%= label %></label>
+  <input type="<%= type %>" id="<%= id %>" name="<%= name %>" class="border-darkWhite focus:border-primaryGreen mt-1 px-4 py-3 pr-10 border rounded-md w-full focus:outline-none" placeholder="<%= placeholder || '' %>" <%= required ? 'required' : '' %> />
+  <% if (type === 'password') { %>
+  <span class="top-[30%] md:top-[35%] xl:top-[40%] right-0 absolute inset-y-0 flex items-center pr-3 text-lg text-primaryGreen md:text-xl xl:text-2xl cursor-pointer" onclick="togglePasswordVisibility('<%= id %>')">
+    <i id="<%= id %>-icon" class="ph-duotone ph-eye"></i>
+  </span>
+  <% } %>
+</div>

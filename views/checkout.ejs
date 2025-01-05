@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout</title>
+  <%- include("partials/_seo"); -%>
+  <script defer src="../JS/auth.js"></script>
+  <script defer src="../JS/copy.js"></script>
+</head>
+
+<body class="bg-blueishWhite text-xs md:text-sm xl:text-base main">
+  <%- include("partials/_header", { userName: user.fullName }); -%>
+  <%- include("partials/_userSidebar", { page: currentPage }); -%>
+  <%- include('partials/_alert') %>
+  <p class="m-4 font-bold text-lg text-lightBlack md:text-xl lg:text-2xl xl:text-3xl">Checkout</p>
+
+  <section class="p-4">
+    <div class="border-[#767680] bg-white p-4 border border-opacity-10 rounded-2xl">
+        <p class="font-bold text-lightBlack text-sm md:text-base xl:text-lg">Bitcoin Wallet</p>
+        <div class="flex flex-wrap items-center gap-5">
+            <p id="wallet" class="font-medium">bc1qxq7eppuuwe85st5pmy28w4ltzl6r6c7w9tq409</p> 
+            <i class="ph-copy text-darkBlue text-xl md:text-2xl xl:text-3xl cursor-pointer ph" onclick="copy('wallet')"></i>
+        </div>
+        <img src="../Images/btcQR.jpg" alt="BTC QR Code" class="mt-4 md:size-24 size-20 xl:size-32">
+        <p class="mt-1 text-[10px] text-gray-500 xl:text-sm md:text-xs">You can also scan the QR Code for easy access to the wallet information.</p>
+    </div>
+    <div class="border-[#767680] bg-white mt-4 p-4 border border-opacity-10 rounded-2xl">
+      <p class="font-bold text-lightBlack text-sm md:text-base xl:text-lg">Cryptocurrency Funding Method</p>
+      <p class="text-darkBlue">Finalise your Deposit.</p>
+
+      <form id="myForm" action="/user/checkout" method="POST" class="mt-10 w-full text-left">
+        <p class="font-medium text-gray-700">Cryptocurrency</p>
+        <div class="border-darkWhite mt-1 mb-4 px-4 py-3 border rounded-md cursor-not-allowed">Bitcoin</div>
+        <%- include('partials/_input.ejs', { type:'text', id: 'transactionHash', name: 'transactionHash', label: 'Transaction Hash', placeholder: 'Transaction Hash for Easy Verification', required: true }) %>
+        <input type="hidden" name="amount" value="<%= amount %>">
+        <%- include('partials/_button.ejs', { type: 'submit', label: 'Make Deposit', icon: '📦', disabled: false }) %>
+        <input class="mt-4 text-red-600 hover:text-red-800 capitalize duration-300 cursor-pointer" type="submit" value="cancel" name="action" />
+      </form>
+    </div>
+  </section>
+</body>
+
+</html>

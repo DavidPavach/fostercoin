@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Details</title>
+  <%- include("partials/_seo"); -%>
+</head>
+
+<body class="bg-blueishWhite text-xs md:text-sm xl:text-base main">
+  <%- include("partials/_adminHeader.ejs"); -%>
+  <%- include("partials/_adminSidebar.ejs", { page: currentPage }); -%>
+  <%- include("partials/_alert.ejs"); -%>
+
+  <section class="p-6">
+    <div class="flex flex-col gap-y-2 border-gray-200 bg-white mb-4 p-4 border rounded-lg">
+      <div class="flex justify-between items-center mb-4">
+        <h2 class="font-bold text-base text-darkBlue md:text-lg xl:text-xl">User Information</h2>
+        <h2 class="font-bold text-base text-primaryGreen md:text-lg xl:text-xl">$ <%= balance %></h2>
+      </div>
+      <p><strong>Full Name:</strong> <%= user.fullName %></p>
+      <p><strong>Email:</strong> <%= user.email %></p>
+      <p><strong>Username:</strong> <%= user.username %></p>
+      <p><strong>Wallet:</strong> <%= user.wallet || "No wallet address provided" %></p>
+      <p><strong>Status:</strong> <%= user.isSuspended ? "Suspended" : "Active" %></p>
+      <p><strong>Created At:</strong> <%= new Date(user.createdAt).toLocaleString() %></p>
+      <p><strong>Updated At:</strong> <%= new Date(user.updatedAt).toLocaleString() %></p>
+      <div class="mt-4">
+        <form action="/admin/user" method="post">
+          <input type="hidden" name="userId" value="<%= user.id %>">
+          <%- include('partials/_input.ejs', { type: 'text', id: 'wallet', name: 'wallet', label: 'Update Wallet', placeholder: user?.wallet || 'Enter your BTC wallet address', required: false }) %>
+          <%- include('partials/_button.ejs', { type: 'submit', label: 'Update Wallet', icon: '🚀', disabled: false }) %>
+        </form>
+      </div>
+    </div>
+
+    <div class="flex flex-col gap-y-2 border-gray-200 bg-white mb-4 p-4 border rounded-lg">
+      <h2 class="mb-4 font-bold text-base text-darkBlue md:text-lg xl:text-xl">Profile</h2>
+      <% if (user.Profile) { %>
+      <p><strong>Country:</strong> <%= user.Profile.country || "N/A" %></p>
+      <p><strong>City:</strong> <%= user.Profile.city || "N/A" %></p>
+      <p><strong>Postal Code:</strong> <%= user.Profile.postalCode || "N/A" %></p>
+      <p><strong>Phone Number:</strong> <%= user.Profile.phoneNumber || "N/A" %></p>
+      <p><strong>Gender:</strong> <%= user.Profile.gender || "N/A" %></p>
+      <% } else { %>
+      <p class="text-gray-500">No profile information available.</p>
+      <% } %>
+    </div>
+
+    <section>
+      <% const sections = [
+            { title: "Deposits", data: user.Deposits, icon: "/Images/deposit.svg", bgColor: "bg-green-100" },
+            { title: "Withdrawals", data: user.Withdrawals, icon: "/Images/withdraw.svg", bgColor: "bg-red-100" },
+            { title: "Investments", data: user.Investments, icon: "/Images/investment.svg", bgColor: "bg-purple-100" },
+            { title: "Bonuses", data: user.Bonuses, icon: "/Images/bonus.svg", bgColor: "bg-blue-100" },
+            { title: "Penalties", data: user.Penalties, icon: "/Images/penalty.svg", bgColor: "bg-yellow-100" },
+            { title: "Earnings", data: user.Earnings, icon: "/Images/earn.svg", bgColor: "bg-orange-100" },
+          ]; %>
+
+      <% sections.forEach(section => { %>
+      <div class="border-gray-200 bg-white mb-4 p-4 border rounded-lg">
+        <h2 class="mb-4 font-bold text-base text-darkBlue md:text-lg xl:text-xl"><%= section.title %> (<%= section.data.length %>)</h2>
+        <% if (section.data.length > 0) { %>
+        <div class="space-y-4">
+          <% section.data.forEach(item => { %>
+          <%- include('partials/_transaction', {
+                  iconBg: section.bgColor,
+                  iconSrc: section.icon,
+                  iconAlt: `${section.title} Icon`,
+                  textColor: "text-gray-700",
+                  description: section.title === "Deposits" || section.title === "Withdrawals"
+                                ? `Transaction via ${item.coin || "unknown"}`
+                                : section.title === "Investments"
+                                  ? `Plan: ${item.plan}`
+                                  : section.title === "Bonuses" || section.title === "Penalties" || section.title === "Earnings"
+                                    ? item.description
+                                    : `Details: ${JSON.stringify(item)}`,
+                  amountColor: section.title === "Penalties" ? "text-red-500" : "text-green-500",
+                  amountSign: section.title === "Penalties" || section.title === "Withdrawals" ? "-" : "+",
+                  amount: item.amount,
+                  date: new Date(item.createdAt).toLocaleString("en-US", {
+                    year: "numeric",
+                    month: "short",
+                    day: "numeric",
+                    hour: "2-digit",
+                    minute: "2-digit",
+                    second: "2-digit",
+                    hour12: true,
+                  }),
+                }) %>
+          <% }) %>
+        </div>
+        <% } else { %>
+        <p class="text-gray-500">No <%= section.title.toLowerCase() %> found.</p>
+        <% } %>
+      </div>
+      <% }) %>
+    </section>
+    <section class="border-gray-200 bg-white mb-4 p-4 border rounded-lg">
+      <h2 class="mb-4 font-bold text-base text-darkBlue md:text-lg xl:text-xl">Referrals (<%= referrals.length %>)</h2>
+      <% referrals.forEach (referral => { %>
+      <div class="flex justify-between items-center border-[#7676801F] py-4 border-b">
+        <div class="flex items-center gap-x-2">
+          <i class="ph-fill ph-user-circle-check text-4xl text-primaryGreen"></i>
+          <div>
+            <p><%= referral.User.fullName %></p>
+            <p class="-mt-1 text-[#667085] text-[10px] xl:text-sm md:text-xs"><%= referral.User.email %></p>
+          </div>
+        </div>
+        <p class="bg-[#E6F5EE] px-4 py-1 rounded-3xl text-[#026C3C]">Active</p>
+      </div>
+      <% }) %>
+    </section>
+</body>
+
+</html>

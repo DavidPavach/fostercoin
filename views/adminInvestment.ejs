@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Investment</title>
+  <%- include("partials/_seo"); -%>
+  <script defer src="../JS/collapsible.js"></script>
+</head>
+
+<body class="bg-blueishWhite text-xs md:text-sm xl:text-base main">
+  <%- include("partials/_adminHeader.ejs"); -%>
+  <%- include("partials/_adminSidebar.ejs", { page: currentPage }); -%>
+
+  <section class="p-4">
+    <p class="font-bold text-lg text-lightBlack md:text-xl lg:text-2xl xl:text-3xl">Investment</p>
+    <p class="text-darkBlue">Manage all your clients Investment.</p>
+
+    <div class="border-[#767680] bg-[#FFFFFF] mt-6 p-4 border border-opacity-10 rounded-2xl">
+      <h2 class="mb-4 font-bold text-lightBlack text-sm md:text-base xl:text-lg">Your Investments (<%= investmentLength %>)</h2>
+
+      <div class="bg-white px-2 py-4">
+        <% investments.forEach( (investment, index)=> { %>
+        <div class="border-gray-200 mb-4 border rounded-lg overflow-hidden">
+          <button class="flex justify-between items-center px-2 py-3 w-full font-medium text-lightBlack" onclick="toggleCollapsible('<%= index %>')">
+            <div class="flex items-center gap-x-2">
+              <div class="bg-[#DB64641A] bg-opacity-10 p-2 rounded-[50%]">
+                <img src="/Images/investment.svg" alt="Icon">
+              </div>
+              <div>
+                  <p class="font-medium text-left">Investment</p>
+                  <p class="text-[10px] text-gray-600 xl:text-sm md:text-xs"><%=investment.User.email %></p>
+              </div>
+            </div>
+            <div class="flex items-center gap-x-1">
+              <p class="font-medium text-purple-600 text-sm md:text-base xl:text-lg">$ <%= investment.amount %></p>
+              <i id="<%= index %>-icon" class="ph-caret-down ph-fill text-base md:text-lg xl:text-xl"></i>
+            </div>
+          </button>
+          <div id="<%= index %>" class="hidden bg-blueishWhite p-4">
+            <p class="mt-1">Amount: <span class="text-darkBlue"> $<%= investment.amount %></span></p>
+            <p class="mt-1">Plan: <span class="text-darkBlue capitalize"><%= investment.plan %> Plan</span></p>
+            <p class="mt-1">Daily Percent: <span class="text-darkBlue"> <%= investment.dailyPercent %>%</span></p>
+            <p class="mt-1">Payout Amount: <span class="text-darkBlue">$ <%= investment.payoutAmount %></span></p>
+            <p class="mt-1">User Email: <span class="text-darkBlue"><%= investment.User.email %></span></p>
+            <p class="mt-1">User Full Name: <span class="text-darkBlue"><%= investment.User.fullName %></span></p>
+            <p class="mt-1">Investment Status: <span class="text-darkBlue"><%= investment.status %></span></p>
+            <p class="mt-1">Started Time and Date: <span class="text-darkBlue"><%= investment.startDate.toLocaleString("en-US", { year: "numeric", month: "short", day: "numeric", hour: "2-digit", minute: "2-digit", second: "2-digit", hour12: false }) %></span></p>
+            <p class="mt-1">End Time and Date: <span class="text-darkBlue"><%= investment.endDate.toLocaleString("en-US", { year: "numeric", month: "short", day: "numeric", hour: "2-digit", minute: "2-digit", second: "2-digit", hour12: false }) %></span></p>
+          </div>
+        </div>
+        <%})%>
+      </div>
+    </div>
+  </section>
+</body>
+
+</html>

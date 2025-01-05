@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create Account</title>
+  <%-include("partials/_seo");-%>
+  <!-- Password Field Script -->
+  <script defer src="../JS/auth.js"></script>
+</head>
+
+<body class="text-xs md:text-sm xl:text-base">
+  <%- include('partials/_alert') %>
+  <section class="flex lg:flex-row flex-col-reverse gap-y-10 p-4 sm:p-6 md:p-8 lg:p-0 h-dvh">
+    <div class="flex flex-col justify-center items-center lg:w-1/2 h-full text-center lg:text-left">
+      <div class="mx-auto w-[95%] sm:w-[90%] md:w-[80%] lg:w-[70%] xl:w-[60%]">
+        <img src="../Images/logo1.png" class="lg:hidden mx-auto mb-10 w-16 sm:w-20 md:w-28" alt="Foster Coin Logo">
+        <h1 class="font-semibold text-darkBlue text-xl md:text-2xl lg:text-3xl xl:text-4xl">Create Account</h1>
+        <p class="mt-3 text-gray-500">Enter Your details to create an account.</p>
+        <form id="myForm" action="/create" method="POST" class="mt-10 w-full text-left">
+          <%- include('partials/_input.ejs', { type:'email', id: 'email', name: 'email', label: 'Email', placeholder: 'Enter your email address', required: true }) %>
+          <%- include('partials/_input.ejs', { type:'text', id: 'fullName', name: 'fullName', label: 'Full Name', placeholder: 'Enter your fullname', required: true }) %>
+          <%- include('partials/_input.ejs', { type:'text', id: 'username', name: 'username', label: 'Username', placeholder: 'Enter your username', required: true }) %>
+          <%- include('partials/_input.ejs', { type:'password', id: 'password', name: 'password', label: 'Password', placeholder: 'Enter your Password', required: true }) %>
+          <%- include('partials/_input.ejs', { type:'wallet', id: 'wallet', name: 'wallet', label: 'Wallet (Optional)', placeholder: 'Enter your BTC wallet address', required: false }) %>
+          <input type="hidden" name="role" value="<%= role %>">
+          <input type="hidden" name="referral" value="<%= referral %>">
+          <a href="/policies" class="text-gray-500 hover:text-primaryBlue duration-300">By signing up, you agree to our terms of service, privacy and anti-spam policies.</a>
+          <%- include('partials/_button.ejs', { type: 'submit', label: 'Create Account', icon: '🚀', disabled: false }) %>
+        </form>
+        <div class="flex justify-between items-center gap-x-5 mt-4">
+          <p class="text-gray-500">Have an account? <span class="text-black hover:text-primaryBlue duration-300"><a href="/login">Login</a></span></p>
+          <p class="text-black hover:text-primaryBlue duration-300"><a href="/forgot">Forgot Password?</a></p>
+        </div>
+      </div>
+    </div>
+    <div class="lg:flex lg:justify-center lg:items-center hidden bg-[#f3f4f8] lg:w-1/2 h-full">
+      <img src="../Images/logo1.png" class="lg:w-40 xl:w-48 2xl:w-60" alt="Foster Coin Logo">
+    </div>
+  </section>
+</body>
+
+</html>

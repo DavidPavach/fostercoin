@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Account Reinstatement</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #ffffff;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .header {
+      background-color: #12a2e8;
+      text-align: left;
+    }
+
+    .logo {
+      width: 60px;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+    }
+
+    .greeting {
+      margin-top: 20px;
+      font-weight: bold;
+      text-align: left;
+      color: #ffffff;
+    }
+
+    .message {
+      margin-top: 20px;
+      line-height: 1.5;
+    }
+
+    .cta-button {
+      display: block;
+      margin: 30px 0;
+      text-align: center;
+      padding: 15px 0;
+      background-color: #ffffff;
+      border: 2px solid #12a2e8;
+      color: #12a2e8;
+      text-decoration: none;
+      border-radius: 5px;
+    }
+
+    .footer {
+      text-align: center;
+      background-color: #12a2e8;
+      color: #ffffff;
+      padding: 20px;
+    }
+
+    .footer a {
+      color: #ffffff;
+      text-decoration: none;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="header">
+      <img class="logo" src="https://res.cloudinary.com/dpmx02shl/image/upload/v1735545874/logo_clwwux.png" alt="Logo" />
+      <h4 class="greeting">Dear Investor <%= name %>,</h4>
+    </div>
+    <div class="message">
+      <p> We're pleased to inform you that your account has been reinstated! </p>
+      <p>You can now access your account as usual.</p>
+      <p>If you have any questions, feel free to reach out to our support team.</p>
+
+    </div>
+    <a style="color: #12a2e8;" class="cta-button" href="https://www.fostercoin.ltd/user/dashboard">Access Your Account</a>
+    <div class="footer">
+      <p>&copy; <%= year %>. All rights reserved.</p>
+      <p>
+        For inquiries, please contact our support center at
+        <a href="mailto:support@fostercoin.ltd">support@fostercoin.ltd</a>
+      </p>
+    </div>
+  </div>
+</body>
+
+</html>

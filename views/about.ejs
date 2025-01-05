@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Us</title>
+  <%- include("partials/_seo"); -%>
+  <script defer src="../JS/index.js"></script>
+</head>
+
+<body class="text-xs md:text-sm xl:text-base">
+  <%- include("partials/_nav"); -%>
+  <%- include ("partials/_secondHero.ejs", { imageUrl: '/Images/headingImg.jpg', heading: 'About Us', subtext: 'Home'}); -%>
+  <section class="px-4 sm:px-8 md:px-12 lg:px-16 xl:px-20 2xl:px-24 py-10">
+    <div class="flex flex-wrap justify-center gap-5 md:gap-7 xl:gap-10 my-20">
+      <div class="flex flex-col gap-y-3 bg-darkBlue hover:bg-primaryGreen px-2 sm:px-4 md:px-6 xl:px-8 py-10 rounded-[1.5rem] md:rounded-[2rem] xl:rounded-[2.5rem] rounded-tr-none md:rounded-tr-none xl:rounded-tr-none w-[30%] min-w-[16rem] text-center text-white hover:text-darkWhite duration-300 group">
+        <i class="ph-fill ph-magnifying-glass text-3xl md:text-4xl xl:text-5xl"></i>
+        <p class="font-semibold text-sm md:text-base xl:text-lg">Expertise in Crypto</p>
+        <p class="text-white/70">Leveraging deep market knowledge to guide smart and profitable investments.</p>
+      </div>
+      <div class="flex flex-col gap-y-3 bg-darkBlue hover:bg-primaryGreen px-2 sm:px-4 md:px-6 xl:px-8 py-10 rounded-[1.5rem] md:rounded-[2rem] xl:rounded-[2.5rem] w-[30%] min-w-[16rem] text-center text-white hover:text-darkWhite duration-300 group">
+        <i class="ph-fill ph-lock-key text-3xl md:text-4xl xl:text-5xl"></i>
+        <p class="font-semibold text-sm md:text-base xl:text-lg">Commitment to Transparency</p>
+        <p class="text-white/70">Providing clear, open communication to ensure you stay informed at every step.</p>
+      </div>
+      <div class="flex flex-col gap-y-3 bg-darkBlue hover:bg-primaryGreen px-2 sm:px-4 md:px-6 xl:px-8 py-10 rounded-[1.5rem] md:rounded-[2rem] xl:rounded-[2.5rem] rounded-bl-none md:rounded-bl-none xl:rounded-bl-none w-[30%] min-w-[16rem] text-center text-white hover:text-darkWhite duration-300 group">
+        <i class="ph-fill ph-gear text-3xl md:text-4xl xl:text-5xl"></i>
+        <p class="font-semibold text-sm md:text-base xl:text-lg">Innovative Solutions</p>
+        <p class="text-white/70">Developing cutting-edge strategies designed to maximize your returns in the crypto market.</p>
+      </div>
+    </div>
+    <div class="flex md:flex-row flex-col md:justify-between gap-y-5 md:gap-y-0 my-20 md:mt-40">
+      <div class="flex flex-col gap-y-3 w-full md:w-[48%] xl:w-[45%]">
+        <p class="text-primabg-primaryGreen italic">About Foster Coin</p>
+        <p class="font-bold text-darkBLuebg-darkBlue text-xl sm:text-2xl md:text-3xl xl:text-4xl">We Are Here for You</p>
+        <p class="text-black/70">At Foster Coin, our commitment to you goes beyond just managing investments—we are dedicated to being a reliable partner in your financial journey. From the moment you choose to invest with us, you become part of a community that values trust, transparency, and personalized support. <br><br>We understand that the world of cryptocurrency can be complex and sometimes overwhelming. That’s why we prioritize clear communication, providing you with the insights and guidance needed to make informed decisions. Whether you’re a seasoned investor or new to the crypto space, we’re here to simplify the process and help you navigate the rapidly changing market with confidence. <br><br>Our team of experts is always available to answer your questions, address your concerns, and ensure that your investment experience is as smooth and rewarding as possible. At Foster Coin, your success is our success, and we are committed to being there for you every step of the way. <br><br></p>
+        <div class="border-primabg-primaryGreen p-5 border-l-2 rounded-tl-[1.5rem] md:rounded-tl-[2rem] xl:rounded-tl-[2.5rem]">
+          <p class="max-w-[40ch] text-darkBlue italic">In a world of constant change, those who stay ahead of the curve define the future.</p>
+          <p class="mt-2 text-[10px] text-black/80 xl:text-sm md:text-xs">Foster Coin</p>
+        </div>
+        <a href="/create" class="bg-primaryGreen hover:bg-darkBlue my-10 py-3 rounded-[1.5rem] md:rounded-[2rem] xl:rounded-[2.5rem] rounded-tr-none md:rounded-tr-none xl:rounded-tr-none w-44 text-center text-darkWhite duration-300">Invest Now</a>
+      </div>
+      <div class="relative bg-darkBlue p-2 rounded-[1.5rem] md:rounded-[2rem] xl:rounded-[2.5rem] w-full md:w-[48%] xl:w-[45%]">
+        <img src="/Images/about1.jpg" alt="About Us Image" class="rounded-[1.5rem] md:rounded-[2rem] xl:rounded-[2.5rem] -translate-y-4 translate-x-4 md:translate-x-6 md:-translate-y-6 xl:translate-x-8 xl:-translate-y-8 object-cover size-full">
+      </div>
+    </div>
+    <div class="flex md:flex-row flex-col-reverse md:justify-between md:items-center gap-y-10 md:gap-y-0 my-20 md:mt-40">
+      <div class="relative bg-darkBlue p-2 rounded-[1.5rem] md:rounded-[2rem] xl:rounded-[2.5rem] w-full md:w-[48%] xl:w-[45%] h-[30rem] md:h-[35rem] xl:h-[40rem]">
+        <img src="/Images/map.jpg" alt="About Us Image" class="rounded-[1.5rem] md:rounded-[2rem] xl:rounded-[2.5rem] -translate-x-4 -translate-y-4 md:-translate-x-6 md:-translate-y-6 xl:-translate-x-8 xl:-translate-y-8 object-cover size-full">
+        <p class="bottom-1 md:bottom-2 left-10 absolute text-[10px] text-white xl:text-sm md:text-xs">Foster Coin Services</p>
+      </div>
+      <div class="flex flex-col gap-y-3 w-full md:w-[48%] xl:w-[45%]">
+        <p class="text-primabg-primaryGreen italic">Why Choose Foster Coin</p>
+        <p class="font-bold text-darkBLuebg-darkBlue text-xl sm:text-2xl md:text-3xl xl:text-4xl">Known for Trust, Honesty, and Customer Care</p>
+        <p>At Foster Coin, our reputation is built on a foundation of integrity and customer-centric values. <br> <br>We prioritize your peace of mind by upholding the highest standards of transparency, ethical conduct, and personalized support. When you invest with us, you can be confident that your interests are always at the forefront of everything we do.</p>
+        <div class="flex sm:flex-row flex-col gap-5 mt-10">
+          <div class="flex gap-x-1">
+            <i class="ph-fill ph-shield text-3xl text-primaryGreen md:text-4xl xl:text-5xl shrink-0"></i>
+            <div class="flex flex-col gap-y-1">
+              <p class="font-semibold text-base text-darkBlue md:text-lg xl:text-xl">Unwavering Integrity</p>
+              <p class="text-black/70">Our ethical standards guide every decision we make, ensuring your investments are in safe and trustworthy hands.</p>
+            </div>
+          </div>
+          <div class="flex gap-x-1">
+            <i class="ph-fill ph-person-simple text-3xl text-primaryGreen md:text-4xl xl:text-5xl shrink-0"></i>
+            <div class="flex flex-col gap-y-1">
+              <p class="font-semibold text-base text-darkBlue md:text-lg xl:text-xl">Customer-Centric Approach</p>
+              <p class="text-black/70">We prioritize your needs by offering personalized support and dedicated service throughout your investment journey.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <%- include("partials/_cta"); -%>
+  <%- include("partials/_footer"); -%>
+</body>
+
+</html>

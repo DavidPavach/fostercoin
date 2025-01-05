@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Services</title>
+  <%- include("partials/_seo"); -%>
+  <script defer src="../JS/index.js"></script>
+</head>
+
+<body class="text-xs md:text-sm xl:text-base">
+  <!-- Nav Bar -->
+  <%- include("partials/_nav"); -%>
+  <%- include ("partials/_secondHero.ejs", { imageUrl: '/Images/bg.jpg', heading: 'Services', subtext: 'Home'}); -%>
+  <section>
+    <div class="bg-blueishWhite drop-shadow-md mx-auto -mt-10 px-4 sm:px-8 md:px-12 lg:px-16 xl:px-20 2xl:px-24 py-10 rounded-[2rem] w-[95%] md:w-[90%] lg:w-[85%] xl:w-[80%]">
+      <div class="flex flex-col gap-y-3 text-center">
+        <p class="text-darkBlue italic">Our Services</p>
+        <p class="font-bold text-darkNavy text-xl sm:text-2xl md:text-3xl xl:text-4xl">Always Ready To Serve</p>
+        <p class="mx-auto max-w-[60ch] text-black/70">We are dedicated to providing our investors with a comprehensive and seamless investment experience. To this end, we offer a range of services:</p>
+      </div>
+      <div class="flex flex-wrap justify-center gap-3 md:gap-5 lg:gap-7 xl:gap-10 mt-10">
+        <div id="card-1" class="bg-white py-6 p-2 border rounded-[1.5rem] md:rounded-[2rem] xl:rounded-[2.5rem] rounded-tr-none md:rounded-tr-none xl:rounded-tr-none w-[16rem] sm:w-72 h-54">
+          <div class="flex gap-x-2">
+            <div class="bg-orange-600 rounded-full size-3"></div>
+            <div class="bg-purple-600 rounded-full size-3"></div>
+            <div class="bg-primaryGreen rounded-full size-3"></div>
+          </div>
+          <div class="flex flex-col justify-center items-center">
+            <i class="ph-fill ph-globe-hemisphere-west text-3xl text-primaryGreen md:text-4xl xl:text-5xl"></i>
+            <h3 class="mt-2 font-bold text-base md:text-lg xl:text-xl">Wide Investment Range.</h3>
+            <p class="mt-2 text-[10px] text-center xl:text-sm md:text-xs">
+              Our investors can choose from our options the assets
+              that best align with their investment goals and risk tolerance.
+            </p>
+          </div>
+        </div>
+        <div id="card-2" class="bg-white py-6 p-2 border rounded-[1.5rem] md:rounded-[2rem] xl:rounded-[2.5rem] w-[16rem] sm:w-72 h-54">
+          <div class="flex gap-x-2">
+            <div class="bg-orange-600 rounded-full size-3"></div>
+            <div class="bg-purple-600 rounded-full size-3"></div>
+            <div class="bg-primaryGreen rounded-full size-3"></div>
+          </div>
+          <div class="flex flex-col justify-center items-center">
+            <i class="ph-fill ph-magnifying-glass-plus text-3xl text-primaryGreen md:text-4xl xl:text-5xl"></i>
+            <h3 class="mt-2 font-bold text-base md:text-lg xl:text-xl">Transparent Investment.</h3>
+            <p class="mt-2 text-[10px] text-center xl:text-sm md:text-xs">
+              We provide our investors with clear and accurate information
+              about the investments they are making, no hidden details, and no
+              back door.
+            </p>
+          </div>
+        </div>
+        <div id="card-3" class="bg-white py-6 p-2 border rounded-[1.5rem] md:rounded-[2rem] xl:rounded-[2.5rem] w-[16rem] sm:w-72 h-54">
+          <div class="flex gap-x-2">
+            <div class="bg-orange-600 rounded-full size-3"></div>
+            <div class="bg-purple-600 rounded-full size-3"></div>
+            <div class="bg-primaryGreen rounded-full size-3"></div>
+          </div>
+          <div class="flex flex-col justify-center items-center">
+            <i class="ph-fill ph-wrench text-3xl text-primaryGreen md:text-4xl xl:text-5xl"></i>
+            <h3 class="mt-2 font-bold text-base md:text-lg xl:text-xl">Innovative Tools.</h3>
+            <p class="mt-2 text-[10px] text-center xl:text-sm md:text-xs">
+              With our tools, Our investors are better informed. It gives them
+              an edge and makes them stand out in the competitive market.
+            </p>
+          </div>
+        </div>
+        <div id="card-4" class="bg-white py-6 p-2 border rounded-[1.5rem] md:rounded-[2rem] xl:rounded-[2.5rem] rounded-bl-none md:rounded-bl-none xl:rounded-bl-none w-[16rem] sm:w-72 h-54">
+          <div class="flex gap-x-2">
+            <div class="bg-orange-600 rounded-full size-3"></div>
+            <div class="bg-purple-600 rounded-full size-3"></div>
+            <div class="bg-primaryGreen rounded-full size-3"></div>
+          </div>
+          <div class="flex flex-col justify-center items-center">
+            <i class="ph-fill ph-smiley text-3xl text-primaryGreen md:text-4xl xl:text-5xl"></i>
+            <h3 class="mt-2 font-bold text-base md:text-lg xl:text-xl">Dedicated Support.</h3>
+            <p class="mt-2 text-[10px] text-center xl:text-sm md:text-xs">
+              Our customer care ensures that our investors have a positive
+              experience using the website and investing in cryptocurrency.
+            </p>
+          </div>
+        </div>
+        <div id="card-5" class="bg-white py-6 p-2 border rounded-[1.5rem] md:rounded-[2rem] xl:rounded-[2.5rem] rounded-tr-none md:rounded-tr-none xl:rounded-tr-none w-[16rem] sm:w-72 h-54">
+          <div class="flex gap-x-2">
+            <div class="bg-orange-600 rounded-full size-3"></div>
+            <div class="bg-purple-600 rounded-full size-3"></div>
+            <div class="bg-primaryGreen rounded-full size-3"></div>
+          </div>
+          <div class="flex flex-col justify-center items-center">
+            <i class="ph-fill ph-wallet text-3xl text-primaryGreen md:text-4xl xl:text-5xl"></i>
+            <h3 class="mt-2 font-bold text-base md:text-lg xl:text-xl">Secure Wallet Services.</h3>
+            <p class="mt-2 text-[10px] text-center xl:text-sm md:text-xs">
+              We provide secure wallet services to store investors'
+              cryptocurrencies and ensure that their assets are safe and secure.
+            </p>
+          </div>
+        </div>
+        <div id="card-6" class="bg-white py-6 p-2 border rounded-[1.5rem] md:rounded-[2rem] xl:rounded-[2.5rem] w-[16rem] sm:w-72 h-54">
+          <div class="flex gap-x-2">
+            <div class="bg-orange-600 rounded-full size-3"></div>
+            <div class="bg-purple-600 rounded-full size-3"></div>
+            <div class="bg-primaryGreen rounded-full size-3"></div>
+          </div>
+          <div class="flex flex-col justify-center items-center">
+            <i class="ph-book-open ph-fill text-3xl text-primaryGreen md:text-4xl xl:text-5xl"></i>
+            <h3 class="mt-2 font-bold text-base md:text-lg xl:text-xl">Educational Resources.</h3>
+            <p class="mt-2 text-[10px] text-center xl:text-sm md:text-xs">
+              We provide educational resources, including tutorials, articles,
+              and webinars, to help clients better understand the cryptocurrency market and how to make informed investment decisions.
+            </p>
+          </div>
+        </div>
+        <div id="card-7" class="bg-white py-6 p-2 border rounded-[1.5rem] md:rounded-[2rem] xl:rounded-[2.5rem] w-[16rem] sm:w-72 h-54">
+          <div class="flex gap-x-2">
+            <div class="bg-orange-600 rounded-full size-3"></div>
+            <div class="bg-purple-600 rounded-full size-3"></div>
+            <div class="bg-primaryGreen rounded-full size-3"></div>
+          </div>
+          <div class="flex flex-col justify-center items-center">
+            <i class="ph-chart-bar-horizontal ph-fill text-3xl text-primaryGreen md:text-4xl xl:text-5xl"></i>
+            <h3 class="mt-2 font-bold text-base md:text-lg xl:text-xl">Market Analysis.</h3>
+            <p class="mt-2 text-[10px] text-center xl:text-sm md:text-xs">
+              In-depth market analysis and insights to help clients
+              stay informed and up-to-date on the latest trends and developments in the cryptocurrency market.
+            </p>
+          </div>
+        </div>
+        <div id="card-8" class="bg-white py-6 p-2 border rounded-[1.5rem] md:rounded-[2rem] xl:rounded-[2.5rem] rounded-bl-none md:rounded-bl-none xl:rounded-bl-none w-[16rem] sm:w-72 h-54">
+          <div class="flex gap-x-2">
+            <div class="bg-orange-600 rounded-full size-3"></div>
+            <div class="bg-purple-600 rounded-full size-3"></div>
+            <div class="bg-primaryGreen rounded-full size-3"></div>
+          </div>
+          <div class="flex flex-col justify-center items-center">
+            <i class="ph-fill ph-question-mark text-3xl text-primaryGreen md:text-4xl xl:text-5xl"></i>
+            <h3 class="mt-2 font-bold text-base md:text-lg xl:text-xl">Dedicated Support.</h3>
+            <p class="mt-2 text-[10px] text-center xl:text-sm md:text-xs">
+              We believe in the value of building a strong network of
+              satisfied clients. That's why we offer referral services,
+              allowing our clients to earn bonuses for referring new investors
+              to our platform.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="mt-20">
+    <div class="flex flex-col gap-y-10 mx-auto px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12 py-10 w-[95%] md:w-[90%] lg:w-[85%] xl:w-[80%]">
+      <div class="flex flex-col gap-y-3 text-center">
+        <p class="text-primaryBlue italic">Our Process</p>
+        <p class="font-bold text-darkNavy text-xl sm:text-2xl md:text-3xl xl:text-4xl"><span class="text-primarybg-primaryGreen">Earning</span> Process</p>
+        <p class="mx-auto max-w-[60ch] text-black/70">Unlocking Your Potential: A Comprehensive Guide to Earning Through Foster Coin Cryptocurrency investment in Order to Maximize Your Profits.</p>
+      </div>
+      <div class="flex flex-wrap justify-center xl:justify-between gap-3 md:gap-5 lg:gap-7 xl:gap-10 mt-10">
+        <div class="relative bg-blueishWhite p-2 md:p-4 rounded-[50%] md:size-[18rem] size-[16rem] xl:size-80">
+          <div class="top-[5%] right-[10%] z-[2] absolute flex justify-center items-center bg-primaryGreen rounded-[50%] md:size-12 size-10 xl:size-14">
+            <p class="font-semibold text-base text-white md:text-lg xl:text-xl">01</p>
+          </div>
+          <div class="flex flex-col justify-center items-center gap-y-3 border-darkBlue p-4 border rounded-[50%] w-full h-full text-center">
+            <p class="font-semibold text-base text-darkBlue md:text-lg xl:text-xl">Create an Account</p>
+            <p class="text-[10px] xl:text-sm md:text-xs">You need to be a member. It only takes a minute! Enter your details to get started. Exciting things await!</p>
+            <p class="flex items-center gap-x-0.5 text-primaryGreen hover:text-darkBlue duration-300">
+              <a href="/create" target="_blank" rel="noopener noreferrer" class="xl:text-sm md:text-xs">Get Started</a>
+              <i class="ph-arrow-clockwise ph-fill"></i>
+            </p>
+          </div>
+        </div>
+        <div class="relative bg-blueishWhite mt-0 sm:mt-10 p-2 md:p-4 rounded-[50%] md:size-[18rem] size-[16rem] xl:size-80">
+          <div class="top-[5%] right-[10%] z-[2] absolute flex justify-center items-center bg-primaryGreen rounded-[50%] md:size-12 size-10 xl:size-14">
+            <p class="font-semibold text-base text-white md:text-lg xl:text-xl">02</p>
+          </div>
+          <div class="flex flex-col justify-center items-center gap-y-3 border-darkBlue p-4 border rounded-[50%] w-full h-full text-center">
+            <p class="font-semibold text-base text-darkBlue md:text-lg xl:text-xl">Choose Plan</p>
+            <p class="text-[10px] xl:text-sm md:text-xs">Review our plans and select the one that’s right for you. If you have any questions, our support team is here!.</p>
+            <p class="flex items-center gap-x-0.5 text-primaryGreen hover:text-darkBlue duration-300">
+              <a href="/login" target="_blank" rel="noopener noreferrer" class="xl:text-sm md:text-xs">Choose plan</a>
+              <i class="ph-arrow-clockwise ph-fill"></i>
+            </p>
+          </div>
+        </div>
+        <div class="relative bg-blueishWhite p-2 md:p-4 rounded-[50%] md:size-[18rem] size-[16rem] xl:size-80">
+          <div class="top-[5%] right-[10%] z-[2] absolute flex justify-center items-center bg-primaryGreen rounded-[50%] md:size-12 size-10 xl:size-14">
+            <p class="font-semibold text-base text-white md:text-lg xl:text-xl">03</p>
+          </div>
+          <div class="flex flex-col justify-center items-center gap-y-3 border-darkBlue p-4 border rounded-[50%] w-full h-full text-center">
+            <p class="font-semibold text-base text-darkBlue md:text-lg xl:text-xl">Best Result</p>
+            <p class="text-[10px] xl:text-sm md:text-xs">Check your dashboard to see your total ROI and capital. We want you to know exactly what you’ve earned.</p>
+            <p class="flex items-center gap-x-0.5 text-primaryGreen hover:text-darkBlue duration-300">
+              <a href="/login" target="_blank" rel="noopener noreferrer" class="xl:text-sm md:text-xs">Invest now</a>
+              <i class="ph-arrow-clockwise ph-fill"></i>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <%- include("partials/_cta"); -%>
+  <%- include("partials/_footer"); -%>
+</body>
+
+</html>

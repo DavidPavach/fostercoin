@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Investors</title>
+  <%- include("partials/_seo"); -%>
+  <script defer src="../JS/collapsible.js"></script>
+</head>
+
+<body class="bg-blueishWhite text-xs md:text-sm xl:text-base main">
+  <%- include("partials/_adminHeader.ejs"); -%>
+  <%- include("partials/_adminSidebar.ejs", { page: currentPage }); -%>
+  <%- include("partials/_alert.ejs"); -%>
+
+  <section class="p-4">
+    <p class="font-bold text-lg text-lightBlack md:text-xl lg:text-2xl xl:text-3xl">Investors</p>
+    <p class="text-darkBlue">Manage all your Investors.</p>
+
+    <div class="border-[#767680] bg-[#FFFFFF] mt-6 p-4 border border-opacity-10 rounded-2xl">
+        <h2 class="mb-4 font-bold text-lightBlack text-sm md:text-base xl:text-lg">Your Investors (<%= investorsLength %>)</h2>
+      
+        <div class="overflow-x-auto">
+          <table class="border-collapse border-gray-200 border w-full text-left table-auto">
+            <thead class="bg-gray-100">
+              <tr>
+                <th class="border-gray-200 p-4 border font-medium text-lightBlack text-sm md:text-base xl:text-lg">#</th>
+                <th class="border-gray-200 p-4 border font-medium text-lightBlack text-sm md:text-base xl:text-lg">Full Name</th>
+                <th class="border-gray-200 p-4 border font-medium text-lightBlack text-sm md:text-base xl:text-lg">Email</th>
+                <th class="border-gray-200 p-4 border font-medium text-lightBlack text-sm md:text-base xl:text-lg">Status</th>
+                <th class="border-gray-200 p-4 border font-medium text-lightBlack text-sm md:text-base xl:text-lg">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% investors.forEach((investor, index) => { %>
+              <tr class="hover:bg-gray-50 duration-300">
+                <td class="border-gray-200 p-4 border text-gray-700"><%= index + 1 %></td>
+                <td class="flex items-center gap-x-3 border-gray-200 p-4 border text-gray-700">
+                  <div class="bg-green-100 p-2 rounded-[50%] md:size-10 shrink-0 size-8 xl:size-12">
+                    <img src="/Images/user.svg" alt="Icon">
+                  </div>
+                  <div>
+                    <p><%= investor.fullName %></p>
+                  </div>
+                </td>
+                <td class="border-gray-200 p-4 border text-gray-700"><%= investor.email %></td>
+                <td class="border-gray-200 p-4 border text-gray-700">
+                    <form action="/admin/investors?_method=patch" method="post" class="inline-block">
+                        <input type="hidden" name="userId" value="<%= investor.id %>">  
+                        <input class="text-primaryBlue hover:underline capitalize hover:cursor-pointer" type="submit" value="<%= investor.isSuspended ? "unsuspend" : "suspend" %>" name="suspend">
+                      </form>
+                </td>
+                <td class="border-gray-200 p-4 border text-gray-700">
+                  <a href="/admin/user?user=<%= investor.id %>" class="text-green-600 hover:text-green-800 hover:underline duration-300">Details</a>
+                </td>
+              </tr>
+              <% }) %>
+            </tbody>
+          </table>
+        </div>
+      </div>      
+  </section>
+</body>
+
+</html>

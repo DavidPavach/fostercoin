@@ -1,0 +1,41 @@
+<button id="sidebar-toggle" class="top-5 left-4 z-30 fixed flex justify-center items-center lg:hidden bg-darkBlue rounded-lg text-white focus:outline-none size-8" onclick="toggleSidebar()">
+  <i class="ph-list text-2xl ph"></i>
+</button>
+
+<!-- Sidebar Container -->
+<aside id="sidebar" class="top-0 left-0 z-40 fixed border-primaryBlue bg-blueishWhite p-4 border-r w-[280px] h-dvh text-textColor text-xs md:text-sm xl:text-base transform transition-transform -translate-x-full lg:translate-x-0 duration-300 overflow-y-auto ease-in-out">
+  <div class="flex items-center gap-x-5">
+    <img class="bg-black p-2 rounded-[50%] w-10" src="../Images/logo.png" alt="Logo">
+    <p class="font-semibold text-xl">Foster Coin</p>
+    <div class="flex justify-center items-center bg-white rounded-[50%] text-textColor cursor-pointer size-6" onclick="toggleSidebar()"><i class="ph-caret-left lg:hidden ph-fill"></i><i class="lg:block ph-caret-right hidden ph-fill"></i></div>
+  </div>
+
+  <div class="flex flex-col gap-y-5 mt-10">
+    <a onclick="toggleSidebar()" href="/user/dashboard" class="<%= currentPage === '/dashboard' ? 'bg-darkBlue font-bold text-white' : 'font-medium hover:bg-darkBlue hover:text-white duration-300' %> rounded-lg p-3 flex items-center gap-x-5"><i class="ph-fill ph-squares-four text-2xl"></i> Dashboard</a>
+    <a onclick="toggleSidebar()" href="/user/deposit" class="<%= currentPage === '/deposit' ? 'bg-darkBlue font-bold text-white' : 'font-medium hover:bg-darkBlue hover:text-white duration-300' %> rounded-lg p-3 flex items-center gap-x-5"><i class="ph-fill ph-hand-deposit text-2xl"></i> Deposit</a>
+    <a onclick="toggleSidebar()" href="/user/plans" class="<%= currentPage === '/plans' ? 'bg-darkBlue font-bold text-white' : 'font-medium hover:bg-darkBlue hover:text-white duration-300' %> rounded-lg p-3 flex items-center gap-x-5"><i class="ph-fill ph-notepad text-2xl"></i> Plans</a>
+    <a onclick="toggleSidebar()" href="/user/invest" class="<%= currentPage === '/invest' ? 'bg-darkBlue font-bold text-white' : 'font-medium hover:bg-darkBlue hover:text-white duration-300' %> rounded-lg p-3 flex items-center gap-x-5"><i class="ph-fill ph-trend-up text-2xl"></i> Invest</a>
+    <a onclick="toggleSidebar()" href="/user/withdraw" class="<%= currentPage === '/withdraw' ? 'bg-darkBlue font-bold text-white' : 'font-medium hover:bg-darkBlue hover:text-white duration-300' %> rounded-lg p-3 flex items-center gap-x-5"><i class="ph-fill ph-hand-withdraw text-2xl"></i> Withdraw</a>
+    <hr class="bg-black/20 h-0.5">
+    <a onclick="toggleSidebar()" href="/user/history" class="<%= currentPage === '/history' ? 'bg-darkBlue font-bold text-white' : 'font-medium hover:bg-darkBlue hover:text-white duration-300' %> rounded-lg p-3 flex items-center gap-x-5"><i class="ph-fill ph-receipt text-2xl"></i> History</a>
+    <a onclick="toggleSidebar()" href="/user/referral" class="<%= currentPage === '/referral' ? 'bg-darkBlue font-bold text-white' : 'font-medium hover:bg-darkBlue hover:text-white duration-300' %> rounded-lg p-3 flex items-center gap-x-5"><i class="ph-fill ph-users-three text-2xl"></i> Referrals</a>
+    <a onclick="toggleSidebar()" href="/user/profile" class="<%= currentPage === '/profile' ? 'bg-darkBlue font-bold text-white' : 'font-medium hover:bg-darkBlue hover:text-white duration-300' %> rounded-lg p-3 flex items-center gap-x-5"><i class="ph-fill ph-user-check text-2xl"></i> Profile</a>
+    <a onclick="toggleSidebar()" href="/user/support" class="<%= currentPage === '/support' ? 'bg-darkBlue font-bold text-white' : 'font-medium hover:bg-darkBlue hover:text-white duration-300' %> rounded-lg p-3 flex items-center gap-x-5"><i class="ph-fill ph-headset text-2xl"></i> Support</a>
+    <form action="/logout" method="post">
+      <button type="submit" class="font-medium hover:bg-darkBlue hover:text-white duration-300' %> rounded-lg p-3 flex items-center gap-x-5 mb-14 w-full"><i class="ph-fill ph-sign-out text-2xl"></i> Logout</button>
+    </form>
+  </div>
+
+</aside>
+
+<!-- Add Scripts -->
+<script>
+  function toggleSidebar() {
+    const sidebar = document.getElementById('sidebar');
+    if (sidebar.classList.contains('-translate-x-full')) {
+      sidebar.classList.remove('-translate-x-full');
+    } else {
+      sidebar.classList.add('-translate-x-full');
+    }
+  }
+</script>

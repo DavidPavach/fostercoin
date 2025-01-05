@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Referral</title>
+  <%- include("partials/_seo"); -%>
+  <!--  -->
+  <script defer src="/JS/copy.js"></script>
+</head>
+
+<body class="bg-blueishWhite text-xs md:text-sm xl:text-base main">
+  <%- include("partials/_header", { userName: user.fullName }); -%>
+  <%- include("partials/_userSidebar", { page: currentPage }); -%>
+
+  <p class="m-4 font-bold text-lg text-lightBlack md:text-xl lg:text-2xl xl:text-3xl">Referral</p>
+
+  <p class="mx-4 mt-10 text-[#020100]">Earn upto <span class="font-bold text-[#FF5964] text-sm md:text-base xl:text-lg">5%</span> on referral deposit</p>
+  <div class="flex sm:flex-row flex-col gap-y-5 sm:gap-y-0 sm:gap-x-10 px-4">
+    <div class="border-[#545458A6] px-4 py-3 border rounded-lg">
+      <p id="referral-link">https://www.fostercoin.ltd/create?ref=<%= user.username %></p>
+    </div>
+    <button onclick="copy('referral-link')" class="flex justify-center items-center bg-darkBlue hover:bg-primaryBlue px-4 py-3 rounded-lg text-white hover:text-lightBlack duration-300">
+      <i class="ph-copy ph-fill text-2xl"></i>
+      Copy link
+    </button>
+  </div>
+  <section class="p-4">
+    <div class="border-[#767680] bg-[#FFFFFF] mt-6 p-4 border border-opacity-10 rounded-2xl">
+      <h2 class="mb-4 font-bold text-lightBlack text-sm md:text-base xl:text-lg">Your Referrals</h2>
+
+      <div class="h-96 overflow-y-auto">
+        <% if (referrals.length === 0) { %>
+        <p class="text-red-600 text-xs sm:text-sm md:text-base">No Referral Yet.</p>
+        <% } else { %>
+        <% referrals.forEach(referral => { %>
+        <div class="flex justify-between items-center border-[#7676801F] py-4 border-b">
+          <div class="flex items-center gap-x-2">
+            <i class="ph-fill ph-user-circle-check text-4xl text-primaryGreen"></i>
+            <div>
+              <p><%= referral.User.fullName %></p>
+              <p class="-mt-1 text-[#667085] text-[10px] xl:text-sm md:text-xs"><%= referral.User.email %></p>
+            </div>
+          </div>
+          <p class="bg-[#E6F5EE] px-4 py-1 rounded-3xl text-[#026C3C]">Active</p>
+        </div>
+        <% }) %>
+        <% } %>
+      </div>
+    </div>
+  </section>
+</body>
+
+</html>

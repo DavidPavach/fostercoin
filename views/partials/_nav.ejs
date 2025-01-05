@@ -1,0 +1,41 @@
+<!-- Nav Bar -->
+<nav class="relative bg-white px-4 sm:px-8 md:px-12 lg:px-16 xl:px-20 2xl:px-24 py-6">
+  <!-- Flex Box -->
+  <div class="flex justify-between items-center">
+    <a href="/" class="md:hidden"><img class="size-10" src="/Images/logo.png" alt="Foster Coin logo" /></a>
+    <!-- Logo -->
+    <div class="md:flex items-center md:gap-x-5 lg:gap-x-8 xl:gap-[2.5rem] 2xl:gap-[3rem] hidden">
+      <a href="/"><img class="size-12" src="/Images/logo.png" alt="Foster Coin logo" /></a>
+      <!-- Menu Items -->
+      <a href="/about" class="font-medium text-black hover:underline focus:underline duration-500">About us</a>
+      <a href="/faq" class="font-medium text-black hover:underline focus:underline duration-500">FAQs</a>
+      <a href="/services" class="font-medium text-black hover:underline focus:underline duration-500">Services</a>
+      <a href="/contact" class="font-medium text-black hover:underline focus:underline duration-500">Contact us</a>
+    </div>
+    <!-- Button Div-->
+    <div class="md:flex md:gap-x-3 lg:gap-x-5 xl:gap-x-7 2xl:gap-x-10 hidden">
+      <a href="/login" class="border-darkBlue hover:bg-darkBlue px-4 lg:px-6 xl:px-8 2xl:px-10 py-3 border rounded-md font-semibold text-darkBlue hover:text-white duration-500">Log in</a>
+      <a href="/create" class="bg-darkBlue px-4 lg:px-6 xl:px-8 2xl:px-10 py-3 rounded-md font-semibold text-white hover:translate-x-2 duration-500">Sign up
+      </a>
+    </div>
+    <!-- Hamburger Icon -->
+    <button id="menu-btn" class="block md:hidden bg-lightBlack hamburger">
+      <span class="hamburger-top"></span>
+      <span class="hamburger-middle"></span>
+      <span class="hamburger-down"></span>
+    </button>
+  </div>
+  <div class="bottom-0 absolute inset-x-0 h-[1px]" style="background: linear-gradient(90deg, rgba(101,100,219,1) 40%, rgba(85,221,224,1) 60%);"></div>
+  <!-- Mobile Menu -->
+  <div class="md:hidden">
+    <div id="menu" class="right-6 left-6 z-50 absolute flex-col items-center space-y-6 hidden bg-white mt-14 py-8 rounded-md sm:w-auto text-sm self-end sm:self-center">
+      <a class="font-medium text-black hover:underline focus:underline duration-500" href="/about">About us</a>
+      <a class="font-medium text-black hover:underline focus:underline duration-500" href="/faq">FAQs</a>
+      <a class="font-medium text-black hover:underline focus:underline duration-500" href="/services">Services</a>
+      <a class="font-medium text-black hover:underline focus:underline duration-500" href="/contact">Contact us</a>
+      <a class="font-medium text-black hover:underline focus:underline duration-500" href="/legal" target="_blank">Legal</a>
+      <a href="/login" class="border-darkBlue hover:bg-darkBlue px-10 py-3 border rounded-md font-semibold text-darkBlue hover:text-white duration-500">Log in</a>
+      <a href="/create" class="bg-darkBlue px-10 py-3 rounded-md font-semibold text-white hover:translate-x-2 duration-500">Sign up</a>
+    </div>
+  </div>
+</nav>

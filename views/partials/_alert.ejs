@@ -1,0 +1,41 @@
+<% if (message) { %>
+<div id="modal" class="z-10 fixed inset-0 flex justify-center items-center bg-gray-900 bg-opacity-50">
+  <div class="bg-white shadow-lg p-6 rounded-lg w-80 md:w-96 xl:w-[28rem] text-center">
+    <!-- Status Icon -->
+    <% if (message.success) { %>
+    <div class="mb-4 text-3xl md:text-4xl xl:text-5xl">✔️</div>
+    <% } else if (message.pending) { %>
+    <div class="mb-4 text-3xl md:text-4xl xl:text-5xl">⏳</div>
+    <% } else if (message.error) { %>
+    <div class="mb-4 text-3xl md:text-4xl xl:text-5xl">❌</div>
+    <% } else if (message.info) { %>
+    <div class="mb-4 text-3xl md:text-4xl xl:text-5xl">⚠️</div>
+    <% } %>
+
+    <!-- Title -->
+    <h2 class="mb-2 font-semibold text-lg"><%= message.title || 'Notification' %></h2>
+
+    <!-- Description -->
+    <p class="mb-6 text-gray-600"><%= message.description || 'No additional details provided.' %></p>
+
+    <!-- Buttons -->
+    <button id="close" class="bg-red-600 hover:bg-red-700 shadow px-4 py-3 rounded-lg w-full font-medium text-white duration-300">Close Modal</button>
+  </div>
+</div>
+
+<script>
+  const modal = document.getElementById("modal");
+
+  const closePopup = () => {
+    modal.remove();
+  };
+
+  // Auto-close after 2 minutes
+  setTimeout(() => {
+    closePopup();
+  }, 120000);
+
+  // Manual close on click
+  document.getElementById('close').addEventListener('click', closePopup);
+</script>
+<% } %>

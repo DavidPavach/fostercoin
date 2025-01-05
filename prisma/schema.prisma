@@ -1,0 +1,154 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id                   String       @id @default(auto()) @map("_id") @db.ObjectId
+  fullName             String
+  email                String       @unique
+  username             String       @unique
+  password             String
+  wallet               String?
+  role                 UserRole     @default(user)
+  isSuspended          Boolean      @default(false)
+  passwordReset        String?
+  passwordResetExpires DateTime     @default(now())
+  Profile              UserProfile?
+  Deposits             Deposit[]
+  Withdrawals          Withdrawal[]
+  Referrals            Referral[]
+  Bonuses              Bonus[]
+  Penalties            Penalty[]
+  Earnings             Earning[]
+  Investments          Investment[]
+  createdAt            DateTime     @default(now())
+  updatedAt            DateTime     @updatedAt
+}
+
+model UserProfile {
+  id             String      @id @default(auto()) @map("_id") @db.ObjectId
+  country        String?
+  city           String?
+  postalCode     String?
+  phoneNumber    String?
+  gender         UserGender?
+  profilePicture String?
+  idCardFront    String?
+  idCardBack     String?
+  userId         String      @unique @db.ObjectId
+  User           User        @relation(fields: [userId], references: [id])
+  createdAt      DateTime    @default(now())
+  updatedAt      DateTime    @updatedAt
+}
+
+model Deposit {
+  id              String   @id @default(auto()) @map("_id") @db.ObjectId
+  amount          Float
+  type            String   @default("deposit")
+  coin            String   @default("bitcoin")
+  transactionHash String
+  status          Status   @default(pending)
+  User            User?    @relation(fields: [userId], references: [id])
+  userId          String?  @db.ObjectId
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+}
+
+model Withdrawal {
+  id            String   @id @default(auto()) @map("_id") @db.ObjectId
+  amount        Float
+  type          String   @default("withdrawal")
+  coin          String   @default("bitcoin")
+  walletAddress String
+  status        Status   @default(pending)
+  User          User     @relation(fields: [userId], references: [id])
+  userId        String   @db.ObjectId
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}
+
+model Bonus {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  amount      Float
+  type        String   @default("bonus")
+  description String
+  User        User?    @relation(fields: [userId], references: [id])
+  userId      String   @db.ObjectId
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Penalty {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  amount      Float
+  type        String   @default("penalty")
+  description String?
+  User        User     @relation(fields: [userId], references: [id])
+  userId      String   @db.ObjectId
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Referral {
+  id             String   @id @default(auto()) @map("_id") @db.ObjectId
+  referralUserId String   @db.ObjectId //This is the ID of the user that made the referral
+  User           User     @relation(fields: [userEmail], references: [email])
+  userEmail      String   @unique //The email of the user that was referred
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+}
+
+model Earning {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  amount      Float
+  type        String   @default("earning")
+  description String?
+  User        User     @relation(fields: [userId], references: [id])
+  userId      String   @db.ObjectId
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Investment {
+  id                String           @id @default(auto()) @map("_id") @db.ObjectId
+  plan              String
+  type              String           @default("investment")
+  startDate         DateTime         @default(now())
+  endDate           DateTime
+  amount            Float
+  dailyPercent      Float
+  payoutAmount      Float            @default(0)
+  status            InvestmentStatus @default(running)
+  lastIncrementDate DateTime         @default(now())
+  User              User             @relation(fields: [userId], references: [id])
+  userId            String           @db.ObjectId
+  createdAt         DateTime         @default(now())
+  updatedAt         DateTime         @updatedAt
+}
+
+enum UserRole {
+  user
+  admin
+}
+
+enum UserGender {
+  male
+  female
+}
+
+enum Status {
+  failed
+  successful
+  pending
+}
+
+enum InvestmentStatus {
+  completed
+  running
+  cancelled
+}

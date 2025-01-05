@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Withdrawal</title>
+  <%- include("partials/_seo"); -%>
+  <script defer src="../JS/collapsible.js"></script>
+</head>
+
+<body class="bg-blueishWhite text-xs md:text-sm xl:text-base main">
+  <%- include("partials/_adminHeader.ejs"); -%>
+  <%- include("partials/_adminSidebar.ejs", { page: currentPage }); -%>
+  <%- include("partials/_alert.ejs"); -%>
+
+  <section class="p-4">
+    <p class="font-bold text-lg text-lightBlack md:text-xl lg:text-2xl xl:text-3xl">Withdrawal</p>
+    <p class="text-darkBlue">View and Manage all withdrawal transactions.</p>
+
+    <p class="mt-10"><%= withdrawalLength %> transactions</p>
+    <div class="bg-white px-2 py-4">
+      <% withdrawals.forEach( (withdrawal, index)=> { %>
+      <div class="border-gray-200 mb-4 border rounded-lg overflow-hidden">
+        <button class="flex justify-between items-center px-2 py-3 w-full font-medium text-lightBlack" onclick="toggleCollapsible('<%= index %>')">
+          <div class="flex items-center gap-x-2">
+            <div class="bg-[#DB64641A] bg-opacity-10 p-2 rounded-[50%]">
+              <img src="/Images/withdraw.svg" alt="Icon">
+            </div>
+            <p class="font-medium">Deposit</p>
+          </div>
+          <p class="text-[10px] xl:text-sm md:text-xs">
+            <%if(withdrawal.status==="pending" ){%>
+          <form action="/admin/withdrawal?_method=patch" method="post">
+            <input type="hidden" name="id" value="<%= withdrawal.id %>">
+            <input type="hidden" name="userEmail" value="<%= withdrawal.User.email %>">
+              <input type="hidden" name="amount" value="<%= withdrawal.amount  %>">
+            <input class="mr-2 text-green-600 hover:underline capitalize hover:cursor-pointer" type="submit" value="confirm" name="approve">
+            <input class="text-red-600 hover:underline capitalize hover:cursor-pointer" type="submit" value="reject" name="approve">
+          </form>
+          <% } else {%>
+          <h4 class="text-<%= withdrawal.status ===" successful".trim() ? "green" : "red" %>-600 mt-1.5">
+            <%= withdrawal.status==="successful" ? "Completed" : "Rejected" %>
+          </h4>
+          <% }%>
+          </p>
+          <div class="flex items-center gap-x-1">
+            <p class="font-medium text-green-600 text-sm md:text-base xl:text-lg">$ <%= withdrawal.amount %></p>
+            <i id="<%= index %>-icon" class="ph-caret-down ph-fill text-base md:text-lg xl:text-xl"></i>
+          </div>
+        </button>
+        <div id="<%= index %>" class="hidden bg-blueishWhite p-4">
+          <p class="mt-1">Amount: <span class="text-darkBlue"> $<%= withdrawal.amount %></span></p>
+          <p class="mt-1">Coin: <span class="text-darkBlue"> <%= withdrawal.coin %> </span></p>
+          <p class="mt-1">Wallet: <span class="text-darkBlue"> <%= withdrawal.walletAddress %> </span></p>
+          <p class="mt-1">Full Name: <span class="text-darkBlue"> <%= withdrawal.User.fullName %></span></p>
+          <p class="mt-1">User Email: <span class="text-darkBlue"><%= withdrawal.User.email %></span></p>
+          <p class="mt-1">Time and Date: <span class="text-darkBlue"><%= withdrawal.createdAt.toLocaleString("en-US", { year: "numeric", month: "short", day: "numeric", hour: "2-digit", minute: "2-digit", second: "2-digit", hour12: false }) %></span></p>
+          <hr class="mt-1">
+          <h4 class="mt-2 text-darkBlue class=" text-[10px] md:text-xs xl:text-sm"">
+            <%if(withdrawal.status==="pending" ){%>
+            <form action="/admin/withdrawal?_method=patch" method="post">
+              <input type="hidden" name="id" value="<%= withdrawal.id %>">
+              <input type="hidden" name="userEmail" value="<%= withdrawal.User.email %>">
+              <input type="hidden" name="amount" value="<%= withdrawal.amount  %>">
+              <input class="mr-2 text-green-600 md:text-sm hover:underline capitalize hover:cursor-pointer" type="submit" value="confirm" name="approve">
+              <input class="text-red-600 md:text-sm hover:underline capitalize hover:cursor-pointer" type="submit" value="reject" name="approve">
+            </form>
+            <% } else {%>
+            <h4 class="text-<%= withdrawal.status === "successful" ? "green" : "red" %>-600 mt-1.5">
+              <%= withdrawal.status==="successful" ? "Completed" : "Rejected" %>
+            </h4>
+            <% }%>
+          </h4>
+        </div>
+      </div>
+      <%})%>
+    </div>
+  </section>
+</body>
+
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard</title>
+  <%- include("partials/_seo"); -%>
+</head>
+
+<body class="bg-blueishWhite text-xs md:text-sm xl:text-base main">
+  <%- include("partials/_adminHeader.ejs"); -%>
+  <%- include("partials/_adminSidebar.ejs", { page: currentPage }); -%>
+
+  <section class="p-4">
+    <p class="font-bold text-lg text-lightBlack md:text-xl lg:text-2xl xl:text-3xl">Dashboard</p>
+    <p class="text-darkBlue">Keep track of all the activities.</p>
+
+    <div class="border-[#767680] bg-[#FFF] mt-10 px-4 py-10 border border-opacity-10 rounded-2xl">
+      <p class="text-[#4F4F4F] text-[10px] xl:text-sm md:text-xs">This shows a general overview of your activities.</p>
+      <div class="gap-5 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 mt-4">
+        <div class="flex flex-col gap-y-2 border-[#767680] p-4 border border-opacity-10 rounded-xl min-w-[13rem]">
+          <div class="flex justify-center items-center bg-[#2DE300] bg-opacity-10 rounded-[50%] w-10 h-10">
+            <img src="/Images/deposit.svg" alt="Deposit Icon">
+          </div>
+          <p class="font-semibold text-xs">Total deposit</p>
+          <p class="font-bold text-[#20BF55] text-lg md:text-xl xl:text-2xl">+$<%= deposits.reduce((total, current)=> total + current.amount, 0).toLocaleString() %></p>
+        </div>
+        <div class="flex flex-col gap-y-2 border-[#767680] p-4 border border-opacity-10 rounded-xl min-w-[13rem]">
+          <div class="flex justify-center items-center bg-[#DB6464] bg-opacity-10 rounded-[50%] w-10 h-10">
+            <img src="/Images/withdraw.svg" alt="Withdraw Icon">
+          </div>
+          <p class="font-semibold text-xs">Total withdrawal</p>
+          <p class="font-bold text-[#FF5964] text-lg md:text-xl xl:text-2xl">-$<%= withdrawals.reduce((total, current)=> total + current.amount, 0).toLocaleString() %></p>
+        </div>
+        <div class="flex flex-col gap-y-2 border-[#767680] p-4 border border-opacity-10 rounded-xl min-w-[13rem]">
+          <div class="flex justify-center items-center bg-[#DBFE87] bg-opacity-50 rounded-[50%] w-10 h-10">
+            <img src="/Images/earn.svg" alt="Earn Icon">
+          </div>
+          <p class="font-semibold text-xs">Total earnings</p>
+          <p class="font-bold text-[#76A409] text-lg md:text-xl xl:text-2xl">+$<%= earnings.reduce((total, current)=> total + current.amount, 0).toLocaleString() %></p>
+        </div>
+        <div class="flex flex-col gap-y-2 border-[#767680] p-4 border border-opacity-10 rounded-xl min-w-[13rem]">
+          <div class="flex justify-center items-center bg-[#6477DB] bg-opacity-10 rounded-[50%] w-10 h-10">
+            <img src="/Images/adminUsers.svg" alt="Users Icon">
+          </div>
+          <p class="font-semibold text-xs">Total users</p>
+          <p class="font-bold text-[#0E48A1] text-lg md:text-xl xl:text-2xl"><%= usersLength %></p>
+        </div>
+        <div class="flex flex-col gap-y-2 border-[#767680] p-4 border border-opacity-10 rounded-xl min-w-[13rem]">
+          <div class="flex justify-center items-center bg-[#712F79] bg-opacity-30 rounded-[50%] w-10 h-10">
+            <img src="/Images/investment.svg" alt="Invest Icon">
+          </div>
+          <p class="font-semibold text-xs">Total investments</p>
+          <p class="font-bold text-[#712F79] text-lg md:text-xl xl:text-2xl">-$<%= investments.reduce((total, current)=> total + current.amount, 0).toLocaleString() %></p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section>
+    <div class="p-4">
+          <h1 class="mt-16 font-bold text-xl md:text-2xl">Transactions</h1>
+          <h4 class="text-darkBlue">
+            A summary of your last Ten(10) transactions.
+          </h4>
+          <div class="border-[#767680] bg-[#FFF] mt-10 border border-opacity-10 rounded-xl text-black text-xs sm:text-sm xl:text-base">
+            <% lastFiveTransactions.forEach(recent => {%>
+              <div class="flex flex-row justify-between border-[#767680] mt-2 px-4 py-4 border-b border-opacity-10 text-center">
+                <h4 class="w-[30%] capitalize"><%= recent.type%></h4>
+                <div class="w-[30%]">
+                  <% if(recent.type == "deposit") { %>
+                  <a href="/admin/deposit" class="text-green-400 hover:underline capitalize"><%= recent.status%></a>
+                  <% } else if(recent.type == "withdrawal") { %>
+                  <a href="/admin/withdraw" class="text-orange-400 hover:underline capitalize"><%= recent.status%></a>
+                  <% } else if(recent.type === "investment") { %>
+                    <a href="/admin/investment" class="text-purple-400 hover:underline capitalize"><%= recent.status%></a>
+                  <% } else { %>
+                  <p class="capitalize"><%= recent.status || "No Status" %></p>
+                  <% } %>
+                </div>
+                <h4 class="w-[30%]">$<%= recent.amount.toLocaleString()%></h4>
+              </div>
+            <% })%>
+          </div>
+    </div>
+    
+  </section>
+</body>
+
+</html>
