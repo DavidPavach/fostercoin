@@ -290,7 +290,7 @@ class UserController {
     const { amount } = req.body;
 
     try {
-      if (req.body.amount < 100) {
+      if (req.body.amount < 10) {
         req.flash("message", {
           info: true,
           title: "Insufficient Amount",
