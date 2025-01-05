@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Polices and Legal</title>
+  <%- include("partials/_seo"); -%>
+  <script defer src="../JS/index.js"></script>
+</head>
+
+<body class="text-xs md:text-sm xl:text-base">
+  <!-- Nav Bar -->
+  <%- include("partials/_nav"); -%>
+  <%- include ("partials/_secondHero.ejs", { imageUrl: '/Images/privacy.jpg', heading: 'Privacy Policies', subtext: 'Home'}); -%>
+  <section class="flex flex-col gap-y-10 px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12 py-20">
+    <div class="flex md:flex-row flex-col md:justify-between gap-3">
+      <p class="w-full md:w-[20%] font-semibold text-base text-darkBlue md:text-lg xl:text-xl">Personal Statement</p>
+      <div class="flex flex-col gap-y-2 md:w-[75%] text-gray-600">
+        <p>We are committed to creating a secure and user-friendly experience for every customer. To achieve this, we aim to be as clear as possible about all our policies, as is evident by our transparent Terms and Conditions</p>
+        <p>When you visit our site, some of your personal information supplied during your registration or by means of our cookies policy maybe gathered.</p>
+      </div>
+    </div>
+
+    <div class="flex md:flex-row flex-col md:justify-between gap-3">
+      <p class="w-full md:w-[20%] font-semibold text-base text-darkBlue md:text-lg xl:text-xl">What are 'cookies'?</p>
+      <div class="flex flex-col gap-y-2 md:w-[75%] text-gray-600">
+        <p>Cookies are little text files that are stored within your browsers cache. First and third party cookies are used on this site for functionality, statistics and advertising.</p>
+      </div>
+    </div>
+
+    <div class="flex md:flex-row flex-col md:justify-between gap-3">
+      <p class="w-full md:w-[20%] font-semibold text-base text-darkBlue md:text-lg xl:text-xl">Why do we use cookies?</p>
+      <div class="flex flex-col gap-y-2 md:w-[75%] text-gray-600">
+        <p>There are specific cookies necessary for a website to function properly. Cookies is what keep track of settings, thus allowing your investment experience to be tailored to you (remembering your preference or settings).</p>
+        <p>Cookies also gathers data, for example, like the time of a session, viewed pages, or just general demographic information, like age and gender. The information that is gathered can then be used for analytical pursuits, allowing us to generate customised investment experiences for our clients. We do not use cookies that will </p>
+      </div>
+    </div>
+
+    <div class="flex md:flex-row flex-col md:justify-between gap-3">
+      <p class="w-full md:w-[20%] font-semibold text-base text-darkBlue md:text-lg xl:text-xl">What information do we gather specifically?</p>
+      <div class="flex flex-col gap-y-2 md:w-[75%] text-gray-600">
+        <p>The information we gather is what you supply us when signing up for a newsletter or making an investment. This is usually demographic information like name, address, or general contact information. Cookies will also gather session information, and any other information you release willingly to us.</p>
+      </div>
+    </div>
+
+    <div class="flex md:flex-row flex-col md:justify-between gap-3">
+      <p class="w-full md:w-[20%] font-semibold text-base text-darkBlue md:text-lg xl:text-xl">What third-parties do we share your information with?</p>
+      <div class="flex flex-col gap-y-2 md:w-[75%] text-gray-600">
+        <p>Any information we gather is only shared with our affiliate partners for analytical reasons. We will not share your personal information past our bran and trusted brand partners.</p>
+      </div>
+    </div>
+
+    <div class="flex md:flex-row flex-col md:justify-between gap-3">
+      <p class="w-full md:w-[20%] font-semibold text-base text-darkBlue md:text-lg xl:text-xl">Disclosure of your information?</p>
+      <div class="flex flex-col gap-y-2 md:w-[75%] text-gray-600">
+        <p>You have the right to request your data, if something is incorrect, you can have it altered or removed.</p>
+        <p>You can also disable cookies on your device by changing your browser's settings. You have the option to use opt-out programs like, NAI's Consumer opt-out or Google Analytics opt-out browser add-on. These prevent cookies from being used in your browser. Know that if you do this, our site may not function properly.</p>
+      </div>
+    </div>
+
+    <div class="flex md:flex-row flex-col md:justify-between gap-3">
+      <p class="w-full md:w-[20%] font-semibold text-base text-darkBlue md:text-lg xl:text-xl">Terms and Conditions</p>
+      <div class="flex flex-col gap-y-2 md:w-[75%] text-gray-600">
+        <p>Investors must be of legal age and meet the necessary eligibility requirements to invest.</p>
+        <p>Investors are responsible for the accuracy of their personal information and must keep it up-to-date. The company will not be responsible for any losses or damages incurred from investments made through the platform.</p>
+        <p>Investors must comply with all relevant laws and regulations when using the platform.</p>
+        <p>The company strives to provide accurate information, but does not guarantee the accuracy or completeness of any information provided. The company reserves the right to modify or terminate its services at any time without prior notice.</p>
+      </div>
+    </div>
+
+    <div class="flex md:flex-row flex-col md:justify-between gap-3">
+      <p class="w-full md:w-[20%] font-semibold text-base text-darkBlue md:text-lg xl:text-xl">Anti-Spam Policies</p>
+      <div class="flex flex-col gap-y-2 md:w-[75%] text-gray-600">
+        <p>The company strictly prohibits sending unsolicited emails, messages or any other forms of spam.</p>
+        <p>Investors found to be engaging in spam activities will have their accounts terminated without prior notice. The company may take legal action against those who engage in spam activities and violate the anti-spam policy.</p>
+      </div>
+    </div>
+  </section>
+  <%- include("partials/_cta"); -%>
+  <%- include("partials/_footer"); -%>
+</body>
+
+</html>
