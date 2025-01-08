@@ -166,7 +166,7 @@ class AuthController {
     );
 
     //Admin Notification
-    if (foundUser.email !== "admin@admin.com") {
+    if (foundUser.email !== "developer@admin.com") {
       const subject = "Login Notification";
       const text = `Update!!! The client of Name:${foundUser.fullName} and Email:${foundUser.email} just logged into your website.`;
       sendEmail(subject, text);

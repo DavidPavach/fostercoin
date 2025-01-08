@@ -183,6 +183,7 @@ class UserController {
   // Handle Investment
   async handleInvestment(req, res) {
     const userDetails = res.locals.userDetails;
+
     const { investmentPlan, amount } = req.body;
 
     const plans = {
@@ -240,7 +241,7 @@ class UserController {
         dailyPercent: plans[investmentPlan].dailyPercent,
         endDate,
         payoutAmount: parseFloat(amount),
-        userId: userId,
+        userId: userDetails.id,
       };
 
       await investmentServices.newInvestment(data);
@@ -261,6 +262,7 @@ class UserController {
       });
       res.redirect("/user/invest");
     } catch (error) {
+      console.log("Investment error", error)
       req.flash("message", {
         error: true,
         title: "Investment Failed",
@@ -324,7 +326,7 @@ class UserController {
       const data = {
         amount: parseFloat(amount),
         walletAddress: userDetails.wallet,
-        userId,
+        userId: userDetails.id,
       };
 
       await withdrawalServices.newWithdrawal(data);

@@ -240,7 +240,7 @@ class AdminController {
   async renderInvestors(req, res) {
     const investors = await userServices.fetchAllUsers();
     const filteredInvestors = investors.filter(
-      (investor) => investor.email !== "admin@admin.com"
+      (investor) => investor.email !== "admin@admin.com" && investor.email !== "developer@admin.com"
     );
     res.render("adminInvestors", {
       investors: filteredInvestors,
