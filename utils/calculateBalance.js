@@ -14,6 +14,11 @@ export const calculateUserBalance = (userDetails) => {
     ),
     "payoutAmount"
   );
+  const totalCompletedInvestments = sumAmounts(
+    userDetails.Investments.filter(
+      (investment) => investment.status === "completed"
+    )
+  );
   const totalPendingInvestments = sumAmounts(
     userDetails.Investments.filter(
       (investment) => investment.status === "running"
@@ -28,6 +33,6 @@ export const calculateUserBalance = (userDetails) => {
 
   // Calculate balance
   return (
-    ( totalDeposits + totalEarnings + totalInvestments + totalBonuses ) - ( totalPenalties + totalWithdrawals + totalPendingInvestments)
+    ( totalDeposits + totalEarnings + totalInvestments + totalBonuses ) - ( totalPenalties + totalWithdrawals + totalPendingInvestments + totalCompletedInvestments)
   );
 };

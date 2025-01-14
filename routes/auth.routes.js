@@ -17,6 +17,9 @@ router.post("/login", authController.loginUser);
 router.get("/forgot", authController.renderForgotPassword);
 router.post("/forgot", authController.handleForgotPassword);
 
+//Reset Password
+router.post("/reset", authController.handleResetPassword);
+
 //Logout
 router.post("/logout", authController.logoutUser);
 

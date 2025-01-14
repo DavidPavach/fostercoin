@@ -121,19 +121,20 @@ class AuthController {
   }
 
   async loginUser(req, res) {
-    
     const userCredentials = req.body;
 
     // check if user exists
-    const foundUser = await UserService.fetchUserByEmail(userCredentials.email.toLowerCase())
+    const foundUser = await UserService.fetchUserByEmail(
+      userCredentials.email.toLowerCase()
+    );
 
     if (!foundUser) {
       // throw an error with incorrect email or password
-      req.flash("error", "Invalid Username or Password");
       req.flash("message", {
         error: true,
         title: "Invalid Credentials",
-        description: "Please check your entered email and password, and try again.",
+        description:
+          "Please check your entered email and password, and try again.",
       });
       res.redirect("/login");
       return;
@@ -142,7 +143,7 @@ class AuthController {
     // comparing passwords
     const isCorrectPassword = await bcrypt.compare(
       userCredentials.password,
-      foundUser.password,
+      foundUser.password
     );
 
     if (!isCorrectPassword) {
@@ -150,7 +151,8 @@ class AuthController {
       req.flash("message", {
         error: true,
         title: "Invalid Credentials",
-        description: "Please check your entered email and password, and try again.",
+        description:
+          "Please check your entered email and password, and try again.",
       });
       res.redirect("/login");
       return;
@@ -162,7 +164,7 @@ class AuthController {
         email: foundUser.email,
         role: foundUser.role,
       },
-      process.env.JWT_SECRET_KEY,
+      process.env.JWT_SECRET_KEY
     );
 
     //Admin Notification
@@ -183,13 +185,142 @@ class AuthController {
   }
 
   //Forgot Password
-  async renderForgotPassword(req, res){
-    res.render("forgotPassword")
+  async renderForgotPassword(req, res) {
+    res.render("forgotPassword");
   }
 
   // Handle Email for Forgot Password
-  async handleForgotPassword (req, res) {
-    return res.redirect("/forgot");
+  async handleForgotPassword(req, res) {
+    try {
+      const userEmail = req.body.email;
+
+      // Check if user exists
+      const foundUser = await UserService.fetchUserByEmail(
+        userEmail.toLowerCase()
+      );
+
+      if (!foundUser) {
+        // Throw an error if user not found
+        req.flash("message", {
+          error: true,
+          title: "Invalid Credentials",
+          description: "Please check the entered email, and try again.",
+        });
+        return res.redirect("/forgot");
+      }
+
+      // Generate a 6-digit random number
+      const resetCode = Math.floor(100000 + Math.random() * 900000);
+
+      // Calculate the expiration time (15 minutes from now)
+      const expirationTime = new Date(Date.now() + 15 * 60 * 1000);
+
+      // Update the user details online
+      await UserService.editUser(foundUser.id, {
+        passwordReset: resetCode.toString(),
+        passwordResetExpires: expirationTime,
+      });
+
+      //Client Notification
+      new Email(foundUser, "", resetCode).sendForgotPassword();
+
+      // Send a success response
+      req.flash("message", {
+        success: true,
+        title: "Reset Code Sent",
+        description: "A password reset code has been sent to your email.",
+      });
+      return res.render("resetPassword", { id: foundUser.id });
+    } catch (error) {
+      req.flash("message", {
+        error: true,
+        title: "Error",
+        description:
+          "An error occurred while processing your request. Please try again later.",
+      });
+      return res.redirect("/forgot");
+    }
+  }
+
+  //Handle Password
+  async handleResetPassword(req, res) {
+    const { id, code, password } = req.body;
+    console.log("Request Body", req.body);
+    if (!id) return res.redirect("/forgot");
+
+    try {
+      //Get the user details
+      const foundUser = await UserService.fetchUserById(id);
+      console.log("User details", foundUser);
+      if (!foundUser) {
+        // Throw an error if user not found
+        req.flash("message", {
+          error: true,
+          title: "Error",
+          description:
+            "An error occurred while processing your request. Please try again later.",
+        });
+        return res.redirect("/forgot");
+      }
+
+      //Throw an error if there is no password reset details
+      if (!foundUser.passwordResetExpires || !foundUser.passwordReset) {
+        // Throw an error if user not found
+        req.flash("message", {
+          error: true,
+          title: "Error",
+          description:
+            "An error occurred while processing your request. Please try again later.",
+        });
+        return res.redirect("/forgot");
+      }
+
+      const currentTime = Date.now();
+      const expirationTime = new Date(foundUser.passwordResetExpires).getTime();
+
+      //Throw an error if the time has expired
+      if (currentTime > expirationTime) {
+        // Throw an error if user not found
+        req.flash("message", {
+          error: true,
+          title: "Error",
+          description:
+            "An error occurred while processing your request. Please try again later.",
+        });
+        return res.redirect("/forgot");
+      }
+
+      //Throw an error if the code doesn't match
+      if (parseInt(code) !== parseInt(foundUser.passwordReset)) {
+        // Throw an error if user not found
+        req.flash("message", {
+          error: true,
+          title: "Error",
+          description:
+            "An error occurred while processing your request. Please try again later.",
+        });
+        return res.redirect("/forgot");
+      }
+
+      const hash = await bcrypt.hash(password, 12);
+      await UserService.editUser(foundUser.id, { password: hash });
+
+      // Send a success response
+      req.flash("message", {
+        success: true,
+        title: "Reset Done Successfully",
+        description: "Your password reset was done successfully, kindly login.",
+      });
+      return res.redirect("/login");
+    } catch (error) {
+      req.flash("message", {
+        error: true,
+        title: "Error",
+        description:
+          "An error occurred while processing your request. Please try again later.",
+      });
+      return res.redirect("/forgot");
+    }
   }
 }
 
