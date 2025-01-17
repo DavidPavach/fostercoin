@@ -18,101 +18,109 @@ class AuthController {
 
   //Register User
   async registration(req, res) {
-    const userData = {
-      email: req.body.email.toLowerCase(),
-      fullName: req.body.fullName,
-      username: req.body.username,
-      password: req.body.password,
-      wallet: req.body.wallet || "No wallet address",
-      role: req.body.role || "user",
-    };
-    //Check if username is taken
-    const userNameExists = await UserService.fetchUserByUsername(
-      userData.username
-    );
+
+    //Constants
+    const ALLOWED_EMAIL_DOMAINS = ["gmail.com", "yahoo.com", "outlook.com", "hotmail.com"];
+
+    const { email, fullName, username, password, wallet, role, referral } = req.body;
+
+    // Check Email Domain
+    const domain = email.split("@")[1];
+    if (!ALLOWED_EMAIL_DOMAINS.includes(domain)) {
+      req.flash("message", {
+        error: true,
+        title: "Invalid Email Domain",
+        description:
+          "Registration is allowed only for popular email providers.",
+      });
+      return res.redirect("/create");
+    }
+
+    // Check if Username is Taken
+    const userNameExists = await UserService.fetchUserByUsername(username);
     if (userNameExists) {
-      // Throw a warning saying username is taken
       req.flash("message", {
         info: true,
         title: "Username Exists",
         description:
           "This username is already registered. Please choose a different one.",
       });
-      res.redirect("/create");
-      return;
+      return res.redirect("/create");
     }
 
-    // Checking if user already exists
-    const userAlreadyExists = await UserService.fetchUserByEmail(
-      userData.email
-    );
+    // Check if User Already Exists
+    const userAlreadyExists = await UserService.fetchUserByEmail(email);
     if (userAlreadyExists) {
-      // Throw an error message saying user already exists
       req.flash("message", {
         error: true,
         title: "Account Exists",
         description:
-          "A user account with this email already exists, kindly login",
+          "A user account with this email already exists, kindly login.",
       });
-      req.flash("error", "User already Exists, Please login in");
-      res.redirect("/login");
-      return;
+      return res.redirect("/login");
     }
 
-    //Check if referral exists, create a new data
-    if (req.body.referral) {
-      const user = await UserService.fetchUserByUsername(req.body.referral);
-      if (!user) {
-        //Throw an error if an account with the referral username doesn't exist
+    // Validate Password Strength
+    if (
+      !/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/.test(
+        password
+      )
+    ) {
+      req.flash("message", {
+        error: true,
+        title: "Weak Password",
+        description:
+          "Password must be at least 8 characters long and include an uppercase letter, a lowercase letter, a number, and a special character.",
+      });
+      return res.redirect("/create");
+    }
+
+    // Check Referral
+    if (referral) {
+      const referrer = await UserService.fetchUserByUsername(referral);
+      if (!referrer) {
         req.flash("message", {
           error: true,
-          title: "Referral Link Error",
+          title: "Referral Error",
           description: "Referral link does not match any account.",
         });
-        res.redirect("/create");
-        return;
+        return res.redirect("/create");
       }
-      const referralData = {
-        referralUserId: user.id,
-        userEmail: userData.email,
-      };
-      await ReferralService.newReferral(referralData);
+      await ReferralService.newReferral({
+        referralUserId: referrer.id,
+        userEmail: email,
+      });
     }
 
-    // hashing users password
-    const hash = await bcrypt.hash(userData.password, 12);
-    userData.password = hash;
+    // Hash Password
+    const hashedPassword = await bcrypt.hash(password, 12);
 
-    //Create user and the profile
-    const user = await UserService.newUser(userData);
+    // Create User
+    const user = await UserService.newUser({
+      email,
+      fullName,
+      username,
+      password: hashedPassword,
+      wallet: wallet || "No wallet address",
+      role: role || "user",
+    });
+
+    // Generate JWT Token
     const token = jwt.sign(
-      {
-        id: user.id,
-        email: user.email,
-        role: user.role,
-      },
+      { id: user.id, email: user.email, role: user.role },
       process.env.JWT_SECRET_KEY,
       { expiresIn: "1h" }
     );
 
-    //Client Notification
+    // Notifications
     new Email(user).sendWelcome();
+    sendEmail("New User Notification", `A new user signed up: ${user.fullName} (${user.email}).` );
 
-    //Admin Notification
-    const subject = "New User Notification";
-    const text = `A new client of name: ${user.fullName} and Email: ${
-      user.email
-    } just signed up.${
-      req.body.referral
-        ? `The client was referred by the client with username:${req.body.referral}`
-        : ""
-    }`;
-
-    sendEmail(subject, text);
+    // Respond
     res
-      .cookie("token", token, { httpOnly: true, maxAge: 1000 * 60 * 60 })
+      .cookie("token", token, { httpOnly: true, maxAge: 3600000 })
       .header("Authorization", token)
-      .redirect(`/${userData.role}/dashboard`);
+      .redirect(`/${user.role}/dashboard`);
   }
 
   //Render Login Page

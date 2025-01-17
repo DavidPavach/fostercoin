@@ -1,10 +1,13 @@
+// Required Libraries
 import express from "express";
 import session from "express-session";
 import flash from "express-flash";
 import cookieParser from "cookie-parser";
 import methodOverride from "method-override";
+import rateLimit from "express-rate-limit";
+// import csrf from "csurf";
 
-//Routes
+// Import Routes
 import healthCheckRoute from "./routes/healthCheck.routes.js";
 import authRoute from "./routes/auth.routes.js";
 import userRoutes from "./routes/user.routes.js";
@@ -29,12 +32,24 @@ app.use(
 );
 app.use(flash());
 
+// Rate Limiter
+const limiter = rateLimit({
+  windowMs: 15 * 60 * 1000,
+  max: 100,
+  message: "Too many requests from this IP, please try again later.",
+});
+app.use(limiter);
+
+// CSRF Protection
+// const csrfProtection = csrf({ cookie: true });
+// app.use(csrfProtection);
+
 // Flash Middleware
 app.use((req, res, next) => {
   res.locals.message = req.flash("message")[0];
+  // res.locals.csrfToken = req.csrfToken();
   next();
 });
-
 
 // Routes
 app.use("/", healthCheckRoute);
@@ -44,8 +59,7 @@ app.use("/admin", adminRoutes);
 app.use("/", homeRoutes);
 app.use("*", notFoundRoute);
 
-
-// Log requests for debugging
+// Enhanced Logging
 app.use((req, res, next) => {
   console.log(`Received request: ${req.method} ${req.url}`);
   next();
