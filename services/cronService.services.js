@@ -14,50 +14,48 @@ export class CronJobService {
     // Fetch investments due for updates
     const dueInvestments = await prisma.investment.findMany({
       where: {
-        AND: [
-          { status: "running" },
-          {
-            lastIncrementDate: {
-              lte: new Date(now.getTime() - 24 * 60 * 60 * 1000),
-            },
-          },
-          { endDate: { lte: now } }, // Check if endDate is today or earlier
-        ],
+        status: "running",
+        lastIncrementDate: { lt: startOfToday }, // Ensures only one update per day
       },
     });
 
-    console.log("Due investments:", dueInvestments);
+    console.log(`Found ${dueInvestments.length} investments due for updates.`);
 
-    if (dueInvestments.length > 0) {
-      for (const investment of dueInvestments) {
-        const dailyIncrement =
-          investment.amount * (investment.dailyPercent / 100);
-        const updatedAmount = investment.payoutAmount + dailyIncrement;
+    for (const investment of dueInvestments) {
+      const dailyIncrement =
+        investment.amount * (investment.dailyPercent / 100);
+      let updatedPayout = investment.payoutAmount + dailyIncrement;
 
-        // Check if the current date is the end date or later
-        const isLastIncrement =
-          new Date(investment.endDate).getTime() <= startOfToday.getTime();
+      // Get number of days elapsed since startDate
+      const startDate = new Date(investment.startDate);
+      const endDate = new Date(investment.endDate);
+      const daysElapsed =
+        Math.floor((now - startDate) / (1000 * 60 * 60 * 24)) + 1;
 
-        // Update payoutAmount, lastIncrementDate, and potentially status
-        await prisma.investment.update({
-          where: { id: investment.id },
-          data: {
-            payoutAmount: updatedAmount,
-            lastIncrementDate: now,
-            ...(isLastIncrement && { status: "completed" }),
-          },
-        });
+      // Last day check: Ensure total payoutAmount is exactly the correct formula
+      const isLastDay = daysElapsed >= 7 || now >= endDate;
 
-        if (isLastIncrement) {
-          console.log(`Investment ${investment.id} marked as completed.`);
-        } else {
-          console.log(
-            `Investment ${investment.id} updated with new payout amount.`
-          );
-        }
+      if (isLastDay) {
+        updatedPayout = investment.amount * (investment.dailyPercent / 100) * 7;
       }
-    } else {
-      console.log("No investments due for updates.");
+
+      // Update the database
+      await prisma.investment.update({
+        where: { id: investment.id },
+        data: {
+          payoutAmount: updatedPayout, // Either daily increase or final adjustment
+          lastIncrementDate: now,
+          ...(isLastDay && { status: "completed" }), // Mark as completed if last day
+        },
+      });
+
+      console.log(
+        `Investment ${
+          investment.id
+        } updated. Payout Amount: ${updatedPayout}. ${
+          isLastDay ? "Marked as completed." : ""
+        }`
+      );
     }
 
     console.log("Daily investment updates completed.");

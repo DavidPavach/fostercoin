@@ -5,7 +5,6 @@ import flash from "express-flash";
 import cookieParser from "cookie-parser";
 import methodOverride from "method-override";
 import rateLimit from "express-rate-limit";
-// import csrf from "csurf";
 
 // Import Routes
 import healthCheckRoute from "./routes/healthCheck.routes.js";
@@ -16,6 +15,8 @@ import homeRoutes from "./routes/home.routes.js";
 import notFoundRoute from "./routes/notFound.routes.js";
 
 const app = express();
+
+app.set("trust proxy", 1);
 
 // Middlewares
 app.set("view engine", "ejs");
@@ -40,15 +41,20 @@ const limiter = rateLimit({
 });
 app.use(limiter);
 
-// CSRF Protection
-// const csrfProtection = csrf({ cookie: true });
-// app.use(csrfProtection);
-
 // Flash Middleware
 app.use((req, res, next) => {
   res.locals.message = req.flash("message")[0];
-  // res.locals.csrfToken = req.csrfToken();
   next();
+});
+
+
+app.get("/proxy-info", (req, res) => {
+  res.json({
+    clientIp: req.ip,
+    forwardedFor: req.headers["x-forwarded-for"] || "Not provided",
+    protocol: req.protocol,
+    proxyCount: (req.headers["x-forwarded-for"] || "").split(",").length - 1,
+  });
 });
 
 // Routes
@@ -61,7 +67,7 @@ app.use("*", notFoundRoute);
 
 // Enhanced Logging
 app.use((req, res, next) => {
-  console.log(`Received request: ${req.method} ${req.url}`);
+  console.log(`Received request: ${req.method} ${req.url} from IP: ${req.ip}`);
   next();
 });
 
