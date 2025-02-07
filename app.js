@@ -16,7 +16,7 @@ import notFoundRoute from "./routes/notFound.routes.js";
 
 const app = express();
 
-app.set("trust proxy", 1);
+app.set("trust proxy", 2);
 
 // Middlewares
 app.set("view engine", "ejs");
