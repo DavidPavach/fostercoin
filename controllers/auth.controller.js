@@ -18,11 +18,16 @@ class AuthController {
 
   //Register User
   async registration(req, res) {
-
     //Constants
-    const ALLOWED_EMAIL_DOMAINS = ["gmail.com", "yahoo.com", "outlook.com", "hotmail.com"];
+    const ALLOWED_EMAIL_DOMAINS = [
+      "gmail.com",
+      "yahoo.com",
+      "outlook.com",
+      "hotmail.com",
+    ];
 
-    const { email, fullName, username, password, wallet, role, referral } = req.body;
+    const { email, fullName, username, password, wallet, role, referral } =
+      req.body;
 
     // Check Email Domain
     const domain = email.split("@")[1];
@@ -114,7 +119,10 @@ class AuthController {
 
     // Notifications
     new Email(user).sendWelcome();
-    sendEmail("New User Notification", `A new user signed up: ${user.fullName} (${user.email}).` );
+    sendEmail(
+      "New User Notification",
+      `A new user signed up: ${user.fullName} (${user.email}).`
+    );
 
     // Respond
     res
@@ -130,6 +138,19 @@ class AuthController {
 
   async loginUser(req, res) {
     const userCredentials = req.body;
+
+    //Check if there all credentials exists
+    if (!userCredentials.email || !userCredentials.password) {
+      // throw an error with incorrect email or password
+      req.flash("message", {
+        error: true,
+        title: "Invalid Credentials",
+        description:
+          "Please check your entered email and password, and try again.",
+      });
+      res.redirect("/login");
+      return;
+    }
 
     // check if user exists
     const foundUser = await UserService.fetchUserByEmail(

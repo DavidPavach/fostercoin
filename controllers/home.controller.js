@@ -36,9 +36,16 @@ class HomeController {
     const { email, subject, message } = req.body;
 
     try {
+      if (!email || !message || !subject) {
+        req.flash("message", {
+          error: true,
+          title: "Contact Request Failed",
+          description: `Sorry, your contact request couldn't go through now, kindly make sure you filled all the necessary details then try again. Thank you.`,
+        });
+        res.redirect("/contact");
+      }
 
       //Admin Notification
-      const subject = "New Contact Request";
       const text = `A client with the: ${email}, send a contact request with the heading: ${subject} and message: ${message}`;
 
       sendEmail(subject, text);
