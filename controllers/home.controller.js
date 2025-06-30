@@ -42,11 +42,11 @@ class HomeController {
           title: "Contact Request Failed",
           description: `Sorry, your contact request couldn't go through now, kindly make sure you filled all the necessary details then try again. Thank you.`,
         });
-        res.redirect("/contact");
+        return res.redirect("/contact");
       }
 
-      //Admin Notification
-      const text = `A client with the: ${email}, send a contact request with the heading: ${subject} and message: ${message}`;
+      // Admin Notification
+      const text = `A client with the: ${email}, sent a contact request with the heading: ${subject} and message: ${message}`;
 
       sendEmail(subject, text);
       req.flash("message", {
@@ -54,16 +54,17 @@ class HomeController {
         title: "Contact Request Sent",
         description: `Your contact request was sent to one of our service agents, we will get back to you soon`,
       });
-      res.redirect("/contact");
+      return res.redirect("/contact");
     } catch (error) {
       req.flash("message", {
         error: true,
         title: "Contact Request Failed",
         description: `Sorry, your contact request couldn't go through now, kindly try again later, thank you.`,
       });
-      res.redirect("/contact");
+      return res.redirect("/contact");
     }
   }
+
 }
 
 export default new HomeController();
